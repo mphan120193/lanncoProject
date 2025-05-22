@@ -2,38 +2,85 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/userModel.js';
+import { ROLES_LIST } from '../config/roles_list.js';
 
 
 const router = express.Router();
 
-const generateTokens = (user) => {
-    const accessToken = jwt.sign(
-        {
-            "UserInfo": {
-                "userId": user._id,
-                "roles": user.roles
+// const generateTokens = (user) => {
+//     const accessToken = jwt.sign(
+//         {
+//             "UserInfo": {
+//                 "userId": user._id,
+//                 "roles": user.roles
 
-            }
+//             }
 
 
-        },
-        process.env.JWT_SECRET,
-        { expiresIn: '2m' }
-    );
-    const refreshToken = jwt.sign(
-        { userId: user._id },
-        process.env.JWT_REFRESH_SECRET,
-        { expiresIn: '7d' }
-    );
-    return { accessToken, refreshToken };
-};
+//         },
+//         process.env.JWT_SECRET,
+//         { expiresIn: '2m' }
+//     );
+//     const refreshToken = jwt.sign(
+//         { userId: user._id },
+//         process.env.JWT_REFRESH_SECRET,
+//         { expiresIn: '7d' }
+//     );
+//     return { accessToken, refreshToken };
+// };
 
 router.post('/register', async (req, res) => {
-    const { email, password, roles } = req.body;
+    // const { email, password, roles } = req.body;
+
+    
+    // const hashedPassword = await bcrypt.hash(password, 10);
+    // const user = new User({ email, password: hashedPassword, roles });
+    // await user.save();
+    // res.status(201).json({ message: 'User created' });
+
+    const { firstName, lastName, email, password,
+        address, phoneNumber, genderID, positionID } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ email, password: hashedPassword, roles });
-    await user.save();
-    res.status(201).json({ message: 'User created' });
+
+    const userExists = await User.findOne({ email });
+
+  if (userExists) {
+    res.status(400);
+    
+  }
+
+  const roles = ROLES_LIST.User;
+
+  const user = await User.create({
+    firstName,
+    lastName,
+    email,
+    password:hashedPassword,
+    address,
+    roles,
+    phoneNumber,
+    genderID,
+    positionID,
+
+  });
+
+  if (user) {
+    
+
+    res.status(201).json({
+      _id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      address: user.address,
+      roles: user.roles,
+
+    });
+  } else {
+    res.status(400);
+    
+  }
+
 });
 
 router.post('/login', async (req, res) => {
@@ -58,7 +105,7 @@ router.post('/login', async (req, res) => {
 
         },
         process.env.JWT_SECRET,
-        { expiresIn: '2m' }
+        { expiresIn: '5m' }
     );
 
     const newRefreshToken = jwt.sign(
@@ -97,10 +144,15 @@ router.post('/login', async (req, res) => {
         maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
-    res.json({ accessToken });
+    res.json({ accessToken, 
+    _id: user._id,
+    role: user.roles,
+    firstName: user.firstName
+     });
 });
 
 router.get('/refresh', async (req, res) => {
+
     const cookies = req.cookies;
     if (!cookies?.jwt) return res.sendStatus(401);
 
@@ -109,6 +161,8 @@ router.get('/refresh', async (req, res) => {
     res.clearCookie('jwt');
 
     const foundUser = await User.findOne({ refreshToken });
+    //console.log('Found User: ', foundUser);
+
     // detected refresh token reuse!
 
 
@@ -120,6 +174,7 @@ router.get('/refresh', async (req, res) => {
                 if (err) return res.sendStatus(403); //Forbidden
                 console.log('attempted refresh token reuse!')
                 const hackedUser = await User.findOne({ email: decoded.email }).exec();
+                console.log('hackUsed: ', hackedUser )
                 hackedUser.refreshToken = [];
                 const result = await hackedUser.save();
                 console.log(result);
@@ -127,34 +182,13 @@ router.get('/refresh', async (req, res) => {
         )
         return res.sendStatus(403);
     }
-    //try {
 
+   
 
-    // const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+    let newRefreshTokenArray = foundUser.refreshToken.filter(rt => rt !== refreshToken);
 
-    // if (decoded.userId !== foundUser._id.toString()) return res.sendStatus(403);
+    //console.log('newRefreshTokenArray: ' ,newRefreshTokenArray);
 
-    // const accessToken = jwt.sign(
-    //   { 
-    //     "UserInfo" : {
-    //         "userId": foundUser._id,
-    //         "roles": foundUser.roles
-
-    //     }
-
-
-    // },
-
-
-    //   process.env.JWT_SECRET,
-    //   { expiresIn: '2m' }
-    // );
-    // res.json({ accessToken });
-    // } catch (err) {
-    //     res.sendStatus(403);
-    // }
-
-    const newRefreshTokenArray = foundUser.refreshToken.filter(rt => rt !== refreshToken);
     jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET, async (err, decoded) => {
 
         if (err) {
@@ -180,7 +214,7 @@ router.get('/refresh', async (req, res) => {
 
 
             process.env.JWT_SECRET,
-            { expiresIn: '2m' }
+            { expiresIn: '5m' }
         );
 
         const newRefreshToken = jwt.sign(
@@ -188,12 +222,17 @@ router.get('/refresh', async (req, res) => {
             process.env.JWT_REFRESH_SECRET,
             { expiresIn: '7d' }
         );
+        //console.log('new refresh token: ', newRefreshToken);
 
         // Saving refreshToken with current user
-        foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
+        newRefreshTokenArray.push(newRefreshToken);
+        //foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
+        //console.log('New Refresh Token Array: ', newRefreshTokenArray );
+        
+        foundUser.refreshToken= newRefreshTokenArray;
         await foundUser.save();
 
-        res.cookie('jwt', refreshToken, {
+        res.cookie('jwt', newRefreshToken, {
             httpOnly: true,
             secure: false,
             sameSite: 'Lax',

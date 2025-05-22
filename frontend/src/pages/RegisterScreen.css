@@ -1,0 +1,128 @@
+/* RegisterScreen.css */
+
+/* Wrapper for the entire register screen */
+.register-screen-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(to right, #6dd5ed, #2193b0); /* Consistent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Container to control max width of the card */
+.register-container {
+    max-width: 500px; /* Consistent with Login page */
+}
+
+/* Card styling */
+.register-card {
+    background-color: #ffffff;
+    border-radius: 1rem !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out; /* Consistent animation */
+}
+
+/* Card Body padding and text alignment */
+.register-card .card-body {
+    padding: 3.5rem !important; /* Generous padding */
+}
+
+/* Logo styling */
+.register-logo {
+    opacity: 0.9;
+}
+
+/* Title styling */
+.register-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #343a40;
+    margin-bottom: 0.5rem;
+}
+
+/* Subtitle/tagline styling */
+.register-subtitle {
+    font-size: 1.05rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+/* Form control styling */
+.form-control-lg {
+    border-radius: 0.5rem; /* Rounded input fields */
+    padding: 0.75rem 1rem; /* More vertical padding */
+    font-size: 1.1rem;
+    border: 1px solid #ced4da;
+}
+
+.form-control-lg:focus {
+    border-color: #28a745; /* Highlight color on focus */
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+}
+
+/* Button styling */
+.register-button {
+    background-color: #28a745; /* Primary button color (green) */
+    border-color: #28a745;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.register-button:hover:not(:disabled) { /* Hover effect only when not disabled */
+    background-color: #218838;
+    border-color: #1e7e34;
+    transform: translateY(-2px);
+}
+
+.register-button:disabled { /* Styling for disabled state */
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Login link styling */
+.login-link {
+    color: #28a745; /* Match primary button color */
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.login-link:hover {
+    color: #218838;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .register-card .card-body {
+        padding: 2.5rem !important;
+    }
+    .register-title {
+        font-size: 1.8rem;
+    }
+    .register-subtitle {
+        font-size: 0.95rem;
+    }
+    .form-control-lg, .register-button {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Keyframe for fade-in animation (consistent) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

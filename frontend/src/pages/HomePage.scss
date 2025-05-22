@@ -1,0 +1,133 @@
+.home-page {
+
+
+    //height: 300px;
+
+
+
+    .homepage-content {
+        margin-top: 10px;
+        //border: 1px solid green;
+
+        .welcome-section {
+            //border: 1px red solid;
+
+            .custom-title {
+                font-size: 2.5rem;
+            }
+
+            .welcome-section-picture {
+                //border: 1px solid orange;
+                display: flex;
+                /* Make the container a flex container */
+                justify-content: center;
+                /* Center horizontally */
+                align-items: center;
+                /* Center vertically (if needed) */
+                width: 400px;
+                height: 400px;
+
+                .image {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    object-position: left;
+
+
+
+                }
+
+            }
+
+            .welcome-section-para {
+                margin: 30px;
+
+                .telephone {
+                    font-weight: bold;
+                    color: green;
+                }
+            }
+        }
+
+        .service-section {
+            //border: 1px solid yellowgreen;
+
+            .custom-title {
+                font-size: 2.5rem;
+                margin-top: 20px;
+                margin-bottom: 40px;
+            }
+
+            .service-container {
+                background-color: #003b6d;
+                color: white;
+                height: 70px;
+                align-items: center;
+                gap: 20px;
+                cursor: pointer;
+
+                .service-icon {
+                    width: 50px;
+                    height: 50px;
+
+
+
+                    .image {
+                        height: 100%;
+                        width: 100%;
+                        filter: invert(100%);
+
+
+                    }
+
+                }
+
+                .service-text {
+                    font-size: 20px;
+                }
+            }
+
+        }
+
+        .about-us-section {
+            margin-top: 20px;
+            //border: 1px red solid;
+            height: 500px;
+            background-image: url('https://chasedds.com/wp-content/uploads/2022/07/family-blowing-bubbles.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            
+
+            .about-us-title {
+                font-size: 50px;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                color: white
+            }
+
+            .about-us-text {
+                color: white;
+                font-size: 20px;
+
+                .phone-number {
+                    font-weight: bold;
+                }
+
+            }
+
+
+        }
+
+        
+
+        
+
+
+    }
+}

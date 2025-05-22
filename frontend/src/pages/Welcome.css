@@ -1,0 +1,111 @@
+/* WelcomeScreen.css */
+
+/* Full screen background for the welcome page */
+.welcome-screen-wrapper {
+    min-height: 100vh;
+    /* Changed gradient colors to reflect a fresher, dental-clinic feel */
+    background: linear-gradient(to right, #6dd5ed, #2193b0); /* Example: light blue to slightly darker blue */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Container to control max width */
+.welcome-container {
+    max-width: 600px;
+}
+
+/* Card styling */
+.welcome-card {
+    background-color: #ffffff;
+    border-radius: 1rem !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Card Body padding and text alignment */
+.welcome-card .card-body {
+    padding: 3rem !important;
+}
+
+/* Title styling */
+.welcome-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #343a40;
+    line-height: 1.2;
+}
+
+/* Subtitle styling */
+.welcome-subtitle {
+    font-size: 1.15rem;
+    color: #6c757d;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Button styling */
+.welcome-button {
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.welcome-button.btn-primary {
+    /* Updated primary button color to a fresh blue-green often associated with dental/health */
+    background-color: #28a745; /* Example: Bootstrap's success green */
+    border-color: #28a745;
+}
+
+.welcome-button.btn-primary:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #1e7e34;
+    transform: translateY(-2px);
+}
+
+.welcome-button.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+.welcome-button.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Logo styling (if you add an image) */
+.welcome-logo {
+    opacity: 0.9; /* Slightly brighter for a clean look */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .welcome-card .card-body {
+        padding: 2rem !important;
+    }
+    .welcome-title {
+        font-size: 2rem;
+    }
+    .welcome-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Keyframe for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

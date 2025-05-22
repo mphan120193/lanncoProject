@@ -4,11 +4,42 @@ backend/node_modules/
 
 # Logs
 **/*.log
+frontend/logs
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
 
 # Build output
 frontend/build/
 backend/dist/
 
+
+frontend/dist
+frontend/dist-ssr
+frontend/*.local
+
 # Environment files
 frontend/.env
 backend/.env
+
+
+
+
+
+
+
+
+# Editor directories and files
+frontend/.vscode/*
+frontend/!.vscode/extensions.json
+frontend/.idea
+frontend/.DS_Store
+frontend/*.suo
+frontend/*.ntvs*
+frontend/*.njsproj
+frontend/*.sln
+frontend/*.sw?
+

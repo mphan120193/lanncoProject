@@ -36,7 +36,7 @@ app.use(logger);
 // Only allow the url in the whitelist to access the backend.
 // Remove the 'http://127.0.0.1:5500', 'http://localhost:8080' and || !origin on Production
 
-const whitelist = ['https://wwww.yoursite.com', 'http://127.0.0.1:5500', 'http://localhost:8080'];
+const whitelist = ['https://wwww.yoursite.com', 'http://127.0.0.1:5173', 'http://localhost:5173'];
 const corsOptions={
     origin: (origin, callback)=>{
         if(whitelist.lastIndexOf(origin) !==-1 || !origin){
@@ -56,16 +56,19 @@ app.use(cookieParser());
 
 
 
-app.get('/', (req, res)=>{
-    res.send('Hello from Express');
-})
-
 app.use('/api/auth', authRoutes);
 
 // Protected route example
-app.use('/api/protected', verifyJWT, verifyRoles(ROLES_LIST.Amdin), (req, res) => {
-  res.json({ message: `Hello user ${req.userId}, this is protected.` });
-});
+// app.use('/api/protected', verifyJWT, verifyRoles(ROLES_LIST.Amdin), (req, res) => {
+//   res.json({ message: `Hello user ${req.userId}, this is protected.` });
+// });
+
+
+app.use('/api/protected', verifyJWT, (req, res) => {
+    res.json({ message: `Hello user ${req.userId}, this is protected.` });
+  });
+
+
 
 
 app.use(notFound);

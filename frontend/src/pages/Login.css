@@ -1,0 +1,124 @@
+/* LoginScreen.css */
+
+/* Wrapper for the entire login screen */
+.login-screen-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(to right, #6dd5ed, #2193b0); /* Consistent with WelcomeScreen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Container to control max width of the card */
+.login-container {
+    max-width: 500px; /* Adjust max-width for login form */
+}
+
+/* Card styling */
+.login-card {
+    background-color: #ffffff;
+    border-radius: 1rem !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out; /* Consistent animation */
+}
+
+/* Card Body padding and text alignment */
+.login-card .card-body {
+    padding: 3.5rem !important; /* Generous padding */
+}
+
+/* Logo styling */
+.login-logo {
+    opacity: 0.9;
+}
+
+/* Title styling */
+.login-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #343a40;
+    margin-bottom: 0.5rem; /* Closer to subtitle */
+}
+
+/* Subtitle/tagline styling */
+.login-subtitle {
+    font-size: 1.05rem;
+    color: #6c757d;
+    margin-bottom: 2rem; /* More space before the form */
+}
+
+/* Form control styling */
+.form-control-lg {
+    border-radius: 0.5rem; /* Rounded input fields */
+    padding: 0.75rem 1rem; /* More vertical padding */
+    font-size: 1.1rem;
+    border: 1px solid #ced4da; /* Consistent border */
+}
+
+.form-control-lg:focus {
+    border-color: #28a745; /* Highlight color on focus */
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Subtle shadow on focus */
+}
+
+
+/* Button styling */
+.login-button {
+    background-color: #28a745; /* Primary button color (green) */
+    border-color: #28a745;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 600; /* Bolder text for CTA */
+}
+
+.login-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #1e7e34;
+    transform: translateY(-2px);
+}
+
+/* Register link styling */
+.register-link {
+    color: #28a745; /* Match primary button color */
+    font-weight: 600;
+    text-decoration: none; /* Remove underline by default */
+    transition: color 0.2s ease;
+}
+
+.register-link:hover {
+    color: #218838; /* Darker on hover */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .login-card .card-body {
+        padding: 2.5rem !important;
+    }
+    .login-title {
+        font-size: 1.8rem;
+    }
+    .login-subtitle {
+        font-size: 0.95rem;
+    }
+    .form-control-lg, .login-button {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Keyframe for fade-in animation (consistent) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
