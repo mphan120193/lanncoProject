@@ -22,6 +22,7 @@ import {errorHandler, notFound} from './middlewares/errorHandler.js';
 
 import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
+import doctorRoutes from  './routes/doctorRoutes.js';
 import verifyJWT from './middlewares/verifyJWT.js';
 import { ROLES_LIST } from './config/roles_list.js';
 import { verifyRoles } from './middlewares/verifyRoles.js';
@@ -57,6 +58,7 @@ app.use(cookieParser());
 
 
 app.use('/api/auth', authRoutes);
+app.use('/api/doctor', doctorRoutes);
 
 // Protected route example
 // app.use('/api/protected', verifyJWT, verifyRoles(ROLES_LIST.Amdin), (req, res) => {

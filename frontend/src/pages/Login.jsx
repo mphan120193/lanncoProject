@@ -1,7 +1,7 @@
 import './Login.css';
 import React, { useState } from 'react';
 
-import { useLoginMutation } from '../slices/usersApiSlice';
+import { useLoginMutation } from '../slices/userApiSlice.js';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Card } from 'react-bootstrap';
@@ -26,7 +26,11 @@ const Login = () => {
     try {
       
       const res = await login({ email, password }).unwrap();
+      
       localStorage.setItem('accessToken', res.accessToken);
+
+      
+
       dispatch(setCredentials({ _id: res._id , role: res.role, firstName: res.firstName}));
 
         

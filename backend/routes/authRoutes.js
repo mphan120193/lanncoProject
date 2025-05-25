@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/userModel.js';
 import { ROLES_LIST } from '../config/roles_list.js';
+import { getAllusers } from '../controllers/authController.js';
 
 
 const router = express.Router();
@@ -92,7 +93,7 @@ router.post('/login', async (req, res) => {
         return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    //const { accessToken, refreshToken } = generateTokens(user);
+    
 
     const accessToken = jwt.sign(
         {
@@ -261,5 +262,9 @@ router.post('/logout', async (req, res) => {
     res.clearCookie('jwt');
     res.json({ message: 'Logged out' });
 });
+
+
+
+router.get('/get-all-user', getAllusers  );
 
 export default router;

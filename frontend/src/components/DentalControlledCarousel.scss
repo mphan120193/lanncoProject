@@ -1,0 +1,263 @@
+// .custom-carousel {
+
+//     margin-top: 10px;
+
+
+
+//     .custom-carousel-item {
+//         height: 100%;
+
+
+        
+
+//             .image-wrapper {
+//                 flex: 1;
+//                 position: relative;
+
+//                 display: flex;
+//                 justify-content: center;
+//                 align-items: center;
+//                 height: 100%;
+
+//                 .detail-infor {
+//                     position: absolute;
+//                     top: 40%;
+//                     left: 10%;
+//                     color:rgb(14, 199, 98);
+//                     font-size: 30px;
+                    
+//                     h1{
+//                         margin-bottom: 20px;
+//                         font-size: 50px;
+//                         p{
+//                             margin-top: 10px;
+                            
+//                         }
+//                     }
+
+//                 }
+                
+
+
+            
+
+            
+
+//         }
+
+
+
+
+
+
+
+
+//     }
+
+
+
+
+
+
+// }
+
+/* ControlledCarousel.css */
+
+/* Base Carousel Styling */
+.sunshine-carousel {
+    width: 100%;
+    overflow: hidden; /* Ensure content stays within bounds */
+    position: relative; /* For caption positioning */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Deeper shadow for premium feel */
+    border-radius: 0.5rem; /* Slightly rounded corners for the whole carousel */
+}
+
+/* Individual Carousel Item */
+.sunshine-carousel-item {
+    height: 550px; /* Standard height for large screens */
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Helps with background image positioning */
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+}
+
+/* Background Image Styling */
+.carousel-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire area */
+    filter: brightness(60%) contrast(110%); /* Darken and enhance contrast for text readability */
+    transform: scale(1.03); /* Slight zoom for image quality */
+    transition: transform 0.8s ease-in-out; /* Smooth transition on slide change */
+}
+
+/* Zoom effect on active slide */
+.sunshine-carousel-item.active .carousel-background-image {
+    transform: scale(1); /* Reset zoom for active slide */
+}
+
+/* Carousel Caption Styling */
+.sunshine-carousel-caption {
+    position: relative; /* Position relative to the item, not absolute to parent */
+    z-index: 10; /* Ensure caption is above the image */
+    color: #ffffff; /* White text for readability over dark background */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Subtle text shadow for pop */
+    max-width: 800px; /* Limit caption width */
+    text-align: center;
+    padding: 20px; /* Padding for text */
+    background: rgba(0, 0, 0, 0.2); /* Very subtle translucent background for text block */
+    border-radius: 10px;
+}
+
+.caption-title {
+    font-size: 3.5rem; /* Large, impactful title */
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.caption-text {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-weight: 300; /* Lighter weight for paragraph text */
+}
+
+.caption-text span.d-block.d-md-inline-block {
+    font-weight: 600; /* Make phone number stand out */
+    color: #ffd700; /* Example: a golden yellow for highlight */
+}
+
+/* Button Styling (Consistent with your brand) */
+.caption-button {
+    background-color: #28a745; /* Your brand green */
+    border-color: #28a745;
+    font-size: 1.15rem;
+    padding: 0.8rem 2.2rem;
+    border-radius: 50px; /* Pill-shaped button */
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase; /* Uppercase for call to action */
+    letter-spacing: 1px;
+}
+
+.caption-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #1e7e34;
+    transform: translateY(-3px); /* Subtle lift effect */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow on hover */
+}
+
+/* Carousel Controls (Arrows) */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 8%; /* Increase clickable area */
+    opacity: 0.7; /* Slightly transparent */
+    transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1; /* Fully opaque on hover */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 2rem; /* Larger icons */
+    height: 2rem;
+    background-size: 100%, 100%;
+}
+
+/* Carousel Indicators */
+.carousel-indicators [data-bs-target] {
+    background-color: #ffffff; /* White indicators */
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Circular indicators */
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    margin: 0 7px; /* Spacing between indicators */
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: #007bff; /* Primary blue for active indicator */
+    transform: scale(1.2); /* Slightly larger active indicator */
+}
+
+/* Animate.css Integration (Optional but enhances professionalism) */
+/* You'll need to install animate.css: npm install animate.css */
+/* Then import it globally, e.g., in your App.js or index.js: import 'animate.css'; */
+/* The classes like animate__animated animate__fadeInDown will then work */
+
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) { /* Large screens */
+    .caption-title {
+        font-size: 3rem;
+    }
+    .caption-text {
+        font-size: 1.2rem;
+    }
+    .sunshine-carousel-item {
+        height: 500px;
+    }
+}
+
+@media (max-width: 992px) { /* Medium screens (tablets) */
+    .sunshine-carousel-item {
+        height: 450px;
+    }
+    .caption-title {
+        font-size: 2.5rem;
+    }
+    .caption-text {
+        font-size: 1.1rem;
+    }
+    .caption-button {
+        font-size: 1rem;
+        padding: 0.7rem 1.8rem;
+    }
+}
+
+@media (max-width: 768px) { /* Small screens (phones) */
+    .sunshine-carousel-item {
+        height: 400px;
+    }
+    .caption-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    .caption-text {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .caption-button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.5rem;
+    }
+    .sunshine-carousel-caption {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 576px) { /* Extra small screens */
+    .sunshine-carousel-item {
+        height: 350px;
+    }
+    .caption-title {
+        font-size: 1.7rem;
+    }
+    .caption-text {
+        font-size: 0.9rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .caption-button {
+        padding: 0.5rem 1.2rem;
+    }
+}

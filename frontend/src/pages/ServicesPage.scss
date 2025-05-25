@@ -1,0 +1,126 @@
+.services-page-content {
+    margin-top: 10px;
+    //border: 1px solid green;
+    margin-bottom: 40px;
+
+    .title {
+        font-size: 50px;
+        margin-bottom: 20px;
+        background-color: #003b6d;
+        color: white;
+    }
+
+    .services-text {
+        //border: 1px solid red;
+        margin-top: 30px;
+        font-size: larger;
+
+        .services-list{
+            color: #003b6d;
+            cursor: pointer;
+            
+        }
+    }
+
+    .services-picture {
+        //border: 1px solid green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+
+        .image {
+            width: 500px;
+        }
+    }
+    .services-section{
+        margin-top: 100px;
+
+        .general-dentistry{
+            //border: 1px solid green;
+            height: 500px;
+            
+            .custom-col{
+
+                display: flex;
+                align-items: center;
+                //border: 1px solid green;
+                
+                .picture-container{
+                    
+                    margin-left: 80px;
+                    //border: 1px red solid;
+                    .image{
+                        width: 400px;
+                    }
+    
+                }
+
+                .section-title{
+                    color: #003b6d;
+                }
+
+            }
+
+            
+
+        }
+
+        .cosmetic-dentistry{
+            height: 500px;
+            .custom-col{
+
+                display: flex;
+                align-items: center;
+                .picture-container{
+                    margin-left: 80px;
+                    .image{
+                        width: 400px;
+                    }
+    
+                }
+
+                .section-title{
+                    color: #003b6d;
+                }
+
+            }
+
+            
+
+        }
+
+        .restorative-dentistry{
+            height: 500px;
+            .custom-col{
+
+                display: flex;
+                align-items: center;
+                .picture-container{
+                    margin-left: 80px;
+                    .image{
+                        width: 400px;
+                    }
+    
+                }
+
+                .section-title{
+                    color: #003b6d;
+                }
+
+            }
+
+            
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+}

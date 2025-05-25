@@ -10,7 +10,8 @@ import CosmeticDentistryIcon from '../assets/images/teethIconwS.png';
 import DentalImplantsIcon from '../assets/images/teethScrew.png';
 import CleaningAndExamsIcon from '../assets/images/teethtarget.png';
 import HomeHeader from '../components/HomeHeader';
-
+import DentalControlledCarousel from '../components/DentalControlledCarousel';
+import Homefooter from '../components/Homefooter';
 
 
 
@@ -38,7 +39,7 @@ const HomePage = () => {
                  <HomeHeader/>
 
 
-                {/*<DentalControlledCarousel></DentalControlledCarousel> */}
+                <DentalControlledCarousel/>
 
 
                 <div className='homepage-content'>
@@ -161,29 +162,9 @@ const HomePage = () => {
                     </div>
 
                     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
 
-                {/* <Homefooter></Homefooter> */}
+                <Homefooter/>
 
             </Container>
 

@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 
 
-import { useRegisterMutation } from '../slices/usersApiSlice';
+import { useRegisterMutation } from '../slices/userApiSlice';
 
 import './RegisterScreen.css'; // Import custom CSS for this component
 import logoImage from '/Logo.png';

@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const backendURL = import.meta.env.VITE_BACKEND_URL;
 
-export const api = createApi({
-  reducerPath: 'api',
+export const userApi = createApi({
+  reducerPath: 'userapi',
   baseQuery: fetchBaseQuery({
     baseUrl: backendURL,
     credentials: 'include'
@@ -40,7 +40,18 @@ export const api = createApi({
         url: '/auth/refresh',
         method: 'GET'
       })
-    })
+    }),
+
+    getAllUser: builder.query({
+      query: (params) => ({
+        url: `/auth/get-all-user`,
+        method: 'GET',
+        params: params,
+      }),
+      providesTags: ['userList'],
+    }),
+
+
   })
 });
 
@@ -49,6 +60,7 @@ export const {
   useLoginMutation,
   useRefreshMutation,
   useLogoutMutation,
-  useRefreshTokenQuery
+  useRefreshTokenQuery, 
+  useGetAllUserQuery
 
-} = api;
+} = userApi;
