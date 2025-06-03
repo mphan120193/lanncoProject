@@ -15,15 +15,20 @@ const store = configureStore({
     [api.reducerPath]: api.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [doctorApi.reducerPath]: doctorApi.reducer,
-    
-    
+
+
 
     auth: authReducer,
     language: languageReducer,
-    
-    
+
+
   },
-  middleware: (getDefaultMiddleware) =>getDefaultMiddleware().concat(api.middleware, userApi.middleware, doctorApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(
+    {
+      serializableCheck: {
+        warnAfter: 128,
+      },
+    }).concat(api.middleware, userApi.middleware, doctorApi.middleware),
   devTools: true,
 });
 

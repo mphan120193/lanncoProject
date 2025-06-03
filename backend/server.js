@@ -58,7 +58,7 @@ app.use(cookieParser());
 
 
 app.use('/api/auth', authRoutes);
-app.use('/api/doctor', doctorRoutes);
+app.use('/api/doctor',verifyJWT, doctorRoutes);
 
 // Protected route example
 // app.use('/api/protected', verifyJWT, verifyRoles(ROLES_LIST.Amdin), (req, res) => {

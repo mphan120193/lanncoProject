@@ -1,12 +1,29 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const backendURL = import.meta.env.VITE_BACKEND_URL;
 
+const baseQueryWithReauth = async (args, api, extraOptions) => {
+  let token = localStorage.getItem('accessToken'); 
+
+  const baseQuery = fetchBaseQuery({
+    baseUrl: backendURL,
+    credentials: 'include', 
+    prepareHeaders: (headers, { getState }) => {
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`); 
+      }
+      return headers;
+    },
+  });
+
+  let result = await baseQuery(args, api, extraOptions);
+  return result;
+};
+
 export const userApi = createApi({
   reducerPath: 'userapi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: backendURL,
-    credentials: 'include'
-  }),
+
+  baseQuery: baseQueryWithReauth,
+
   endpoints: (builder) => ({
     
     register: builder.mutation({
@@ -48,8 +65,111 @@ export const userApi = createApi({
         method: 'GET',
         params: params,
       }),
-      providesTags: ['userList'],
+      providesTags: ['UserList'],
     }),
+
+    
+    
+  
+
+
+    
+
+
+    deleteUser: builder.mutation({
+      query: (data) => ({
+        url: `/auth/delete-user`,
+        method: 'DELETE',
+        body: data,
+      }),
+      invalidatesTags: ['UserList'],
+    }),
+
+    getAllCode: builder.query({
+      query: (params) => ({
+        url: `/auth/get-all-code`,
+        method: 'GET',
+        params: params,
+      }),
+      providesTags: ['CodeList'],
+    }),
+
+    registerWImage: builder.mutation({
+      query: (data) => ({
+        url: `auth/create-user-wimage`,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['UserList'],
+    }),
+
+    editUser: builder.mutation({
+      query: (data) => ({
+        url: `/auth/edit-user`,
+        method: 'PUT',
+        body: data,
+      }),
+      invalidatesTags: ['UserList'],
+    }),
+
+    createGetInTouchMessage: builder.mutation({
+      query: (data) => ({
+        url: `/auth/create-get-in-touch-message`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
+
+    getInTouchSendConfirmEmail: builder.mutation({
+      query: (data) => ({
+        url: `/auth/get-in-touch-send-confirm-email`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
+
+    getAllMessage: builder.query({
+      query: (params) => ({
+        url: `/auth/get-all-customer-message`,
+        method: 'GET',
+        params: params,
+      }),
+      providesTags: ['MessageList'],
+    }),
+
+    updateStatusCustomerMessage: builder.mutation({
+      query: (data) => ({
+        url: `/auth/update-status-customer-message`,
+        method: 'PUT',
+        body: data,
+      }),
+      invalidatesTags: ['MessageList'],
+    }),
+
+    bookAppointment: builder.mutation({
+      query: (data) => ({
+        url: `/auth/book-appointment`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
+
+    sendConfirmEmail: builder.mutation({
+      query: (data) => ({
+        url: `/auth/send-confirm-email`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
+
+    verifyEmail: builder.mutation({
+      query: (data) => ({
+        url: `/auth/verify`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
+
 
 
   })
@@ -61,6 +181,19 @@ export const {
   useRefreshMutation,
   useLogoutMutation,
   useRefreshTokenQuery, 
-  useGetAllUserQuery
+  useGetAllUserQuery,
+  useDeleteUserMutation, 
+  useGetAllCodeQuery, 
+  useRegisterWImageMutation,
+  useLazyGetAllUserQuery,
+  useEditUserMutation, 
+  useCreateGetInTouchMessageMutation,
+  useGetInTouchSendConfirmEmailMutation,
+  useGetAllMessageQuery,
+  useUpdateStatusCustomerMessageMutation,
+  useBookAppointmentMutation,
+  useSendConfirmEmailMutation,
+  useVerifyEmailMutation
+  
 
 } = userApi;

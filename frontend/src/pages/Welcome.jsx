@@ -44,9 +44,31 @@ import { Container, Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './Welcome.css';
 import logoImage from '/Logo.png';
+import  {  useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import {  logout } from '../slices/authSlice';
+
+import { useLogoutMutation } from '../slices/userApiSlice';
+
 
 const WelcomeScreen = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [logOut] = useLogoutMutation();
+    
+    useEffect(()=>{
+        const clearUp = async ()=>{
+          try{
+            await logOut().unwrap();
+            dispatch(logout());
+            localStorage.clear();
+          }catch(e){
+            console.log('Clear Up error: ', e);
+          }
+    
+        }
+        clearUp();
+      }, [])
 
     return (
         <div className="welcome-screen-wrapper d-flex align-items-center justify-content-center py-5">

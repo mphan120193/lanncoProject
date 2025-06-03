@@ -1,6 +1,7 @@
 import React from 'react';
 import './HomePage.scss';
 import { Container } from 'react-bootstrap';
+import { useAutoRefreshToken } from '../utils/useAutoRefreshToken.js';
 
 import welcomePic from '../assets/images/welcome.jpg';
 import Row from 'react-bootstrap/Row';
@@ -27,6 +28,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 const HomePage = () => {
+    useAutoRefreshToken();
+
     const navigate = useNavigate();
 
 

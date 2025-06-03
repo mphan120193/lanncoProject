@@ -1,21 +1,44 @@
 import './Login.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { useLoginMutation } from '../slices/userApiSlice.js';
+import { useLoginMutation } from '../redux/api';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Card } from 'react-bootstrap';
 import logoImage from '/Logo.png';
 import { useDispatch } from 'react-redux';
-import { setCredentials } from '../slices/authSlice';
+import { setCredentials, logout } from '../slices/authSlice';
+
+import { useLogoutMutation } from '../slices/userApiSlice';
+
 
 
 const Login = () => {
+
+  
+
+  
+  
+  const [logOut] = useLogoutMutation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [login] = useLoginMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    const clearUp = async ()=>{
+      try{
+        await logOut().unwrap();
+        dispatch(logout());
+        localStorage.clear();
+      }catch(e){
+        console.log('Clear Up error: ', e);
+      }
+
+    }
+    clearUp();
+  }, [])
 
 
   const handleLogin = async (e) => {
@@ -31,7 +54,7 @@ const Login = () => {
 
       
 
-      dispatch(setCredentials({ _id: res._id , role: res.role, firstName: res.firstName}));
+      dispatch(setCredentials({ _id: res._id , roles: res.roles, firstName: res.firstName}));
 
         
      

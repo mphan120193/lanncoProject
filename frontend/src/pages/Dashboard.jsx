@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { useAutoRefreshToken } from '../utils/useAutoRefreshToken';
+import { useAutoRefreshToken } from '../utils/useAutoRefreshToken.js';
 
 import { useLogoutMutation } from '../redux/api';
 
@@ -41,6 +41,8 @@ const Dashboard = () => {
     };
     fetchProtected();
   }, []);
+
+
 
 
 

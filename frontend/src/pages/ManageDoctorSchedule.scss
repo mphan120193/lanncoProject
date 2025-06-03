@@ -1,0 +1,35 @@
+.custom-row {
+    margin-top: 40px !important;
+    .pick-hour-container{
+      display: flex;
+      gap: 20px;
+      //border: 1px solid red;
+      height: 50px;
+      margin-top: 20px;
+      .time-button{
+        cursor: pointer;
+        border-radius: 10px;
+        
+
+        
+        
+      }
+
+      .selected {
+        background-color: blue; /* Example: Change background when selected */
+        color: white;
+      }
+
+      
+      
+      
+
+    }
+
+    
+  }
+
+  .schedule-list-table{
+    //border: 1px solid red;
+    margin-top: 40px;
+  }

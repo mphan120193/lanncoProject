@@ -7,6 +7,7 @@ import Homefooter from '../components/Homefooter';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import aboutImg from '../assets/images/aboutus_img.jpg';
+import { useAutoRefreshToken } from '../utils/useAutoRefreshToken.js';
 
 
 
@@ -21,7 +22,7 @@ import aboutImg from '../assets/images/aboutus_img.jpg';
 
 
 const AboutPage = () => {
-
+    useAutoRefreshToken();
 
 
 

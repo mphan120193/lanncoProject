@@ -3,7 +3,15 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/userModel.js';
 import { ROLES_LIST } from '../config/roles_list.js';
-import { getAllusers } from '../controllers/authController.js';
+import verifyJWT from '../middlewares/verifyJWT.js';
+import { getAllusers, deleteUser, getAllCode, createUser, editUser,
+    createGetInTouchMessage,
+    sendGetInTouchEmail,
+    getAllCustomerMessage,
+    updateStatusCustomerMessage,
+    bookAppointment, 
+    sendConfirmEmail, 
+    verifyEmail } from '../controllers/authController.js';
 
 
 const router = express.Router();
@@ -106,7 +114,7 @@ router.post('/login', async (req, res) => {
 
         },
         process.env.JWT_SECRET,
-        { expiresIn: '5m' }
+        { expiresIn: '15m' }
     );
 
     const newRefreshToken = jwt.sign(
@@ -147,14 +155,15 @@ router.post('/login', async (req, res) => {
 
     res.json({ accessToken, 
     _id: user._id,
-    role: user.roles,
+    roles: user.roles,
     firstName: user.firstName
      });
 });
 
-router.get('/refresh', async (req, res) => {
-
+router.get('/refresh',verifyJWT, async (req, res) => {
+    //console.log(' Enter the refresh......')
     const cookies = req.cookies;
+    //console.log(' Cookies: ', cookies);
     if (!cookies?.jwt) return res.sendStatus(401);
 
     const refreshToken = cookies.jwt;
@@ -188,7 +197,7 @@ router.get('/refresh', async (req, res) => {
 
     let newRefreshTokenArray = foundUser.refreshToken.filter(rt => rt !== refreshToken);
 
-    //console.log('newRefreshTokenArray: ' ,newRefreshTokenArray);
+    
 
     jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET, async (err, decoded) => {
 
@@ -215,7 +224,7 @@ router.get('/refresh', async (req, res) => {
 
 
             process.env.JWT_SECRET,
-            { expiresIn: '5m' }
+            { expiresIn: '15m' }
         );
 
         const newRefreshToken = jwt.sign(
@@ -265,6 +274,25 @@ router.post('/logout', async (req, res) => {
 
 
 
-router.get('/get-all-user', getAllusers  );
+router.get('/get-all-user',verifyJWT, getAllusers  );
+router.delete('/delete-user',verifyJWT, deleteUser);
+router.get('/get-all-code', verifyJWT, getAllCode);
+router.post('/create-user-wimage', verifyJWT, createUser);
+router.put('/edit-user', verifyJWT, editUser);
+router.post('/create-get-in-touch-message',verifyJWT, createGetInTouchMessage);
+router.post('/get-in-touch-send-confirm-email',verifyJWT, sendGetInTouchEmail);
+
+router.get('/get-all-customer-message',verifyJWT,  getAllCustomerMessage);
+router.put('/update-status-customer-message',verifyJWT, updateStatusCustomerMessage );
+
+router.post('/book-appointment', verifyJWT, bookAppointment);
+
+router.post('/send-confirm-email', verifyJWT, sendConfirmEmail);
+router.post('/verify', verifyJWT, verifyEmail);
+
+
+
+
+
 
 export default router;

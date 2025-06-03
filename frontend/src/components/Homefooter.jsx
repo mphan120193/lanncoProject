@@ -5,11 +5,11 @@ import Col from 'react-bootstrap/Col';
 import { Button, Container } from 'react-bootstrap';
 import logoIcon from '../assets/images/logoIcon.png';
 import { useState } from 'react';
-// import {useCreateGetInTouchMessageMutation} from '../slices/usersApiSlice';
-// import { toast } from 'react-toastify';
+import {useCreateGetInTouchMessageMutation} from '../slices/userApiSlice';
+import { toast } from 'react-toastify';
 
-// import {useGetInTouchSendConfirmEmailMutation,
-//     } from '../slices/patientApiSlice';
+import {useGetInTouchSendConfirmEmailMutation,
+    } from '../slices/userApiSlice';
 
 
 const Homefooter = () => {
@@ -18,41 +18,41 @@ const Homefooter = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail]= useState('');
     const [message, setMessage]= useState('');
-    // const [createMessage] = useCreateGetInTouchMessageMutation();
+    const [createMessage] = useCreateGetInTouchMessageMutation();
 
-    // const [sendConfirmEmail] = useGetInTouchSendConfirmEmailMutation();
+    const [sendConfirmEmail] = useGetInTouchSendConfirmEmailMutation();
 
     const handleSubmit = async()=>{
         
 
-        // try{
-        //     let resMessage = await createMessage({name, phoneNumber, email, message});
-        //     console.log(resMessage);
-        //     setName('');
-        //     setPhoneNumber('');
-        //     setEmail('');
-        //     setMessage('');
+        try{
+            let resMessage = await createMessage({name, phoneNumber, email, message});
+            console.log(resMessage);
+            setName('');
+            setPhoneNumber('');
+            setEmail('');
+            setMessage('');
 
-        //     const emailDetails = {
-        //         to: 'mphan120193@gmail.com',
-        //         subject: 'Get In Touch Email from Front End',
-        //         message: "Hello",
-        //         messageDetail: {name, phoneNumber, email, message},
-        //         responseDetail: resMessage.data.messageRes,
-        //     }
-
-
-
-        //     sendConfirmEmail(emailDetails);
-        //     toast.success('Success to send the message');
+            const emailDetails = {
+                to: 'mphan120193@gmail.com',
+                subject: 'Get In Touch Email from Front End',
+                message: "Hello",
+                messageDetail: {name, phoneNumber, email, message},
+                responseDetail: resMessage.data.messageRes,
+            }
 
 
 
+            sendConfirmEmail(emailDetails);
+            toast.success('Success to send the message');
 
-        // }catch(e)
-        // {
-        //     console.log(e);
-        // }
+
+
+
+        }catch(e)
+        {
+            console.log(e);
+        }
 
 
 

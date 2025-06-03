@@ -14,6 +14,12 @@ import NewPatientsPage from './pages/NewPatientsPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 import UserManageScreen from './pages/UserManageScreen';
+import CreateNewUser from './pages/CreateNewUser';
+import ManageDoctor from './pages/ManageDoctor';
+import CustomerMessagePage from './pages/CustomerMessagePage';
+import ManageDoctorSchedule from './pages/ManageDoctorSchedule';
+import AppointmentPage from './pages/AppointmentPage';
+import ConfirmMail from './pages/ConfirmMail';
 
 // const ProtectedRoute = ({ children }) => {
 //   const token = localStorage.getItem('accessToken');
@@ -34,6 +40,7 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/appointment" element={<AppointmentPage />} />
         <Route path='' element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/home" element={<HomePage />} />
@@ -43,6 +50,13 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
 
           <Route path="/system/user-manage" element={<UserManageScreen />} />
+          <Route path="/system/create-new-user" element={<CreateNewUser />} />
+          <Route path="/system/manage-doctor" element={<ManageDoctor />} />
+
+          <Route path="/system/customer-message" element={<CustomerMessagePage />} />
+          <Route path="/system/manage-doctor-schedule" element={<ManageDoctorSchedule />} />
+          <Route path="/confirm-email" element={<ConfirmMail />} />
+
 
 
         </Route>
