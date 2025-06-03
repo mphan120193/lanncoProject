@@ -27,15 +27,15 @@ const ConfirmMail = () => {
         }
     }, [token, doctorID]); // Dependency array ensures it runs when token/doctorID changes
 
-    // Step 2: Fetch data when state updates
+    
     useEffect(() => {
 
         const  fetchData= async()=>{
 
             if (emailToken && emailDoctorID) {
                 let clientData = { token: emailToken, doctorID: emailDoctorID };
-                //console.log("Check data:", clientData);
-                let result = await verify(clientData); // Now it will have the correct values
+                
+                let result = await verify(clientData); 
 
     
                 console.log('Verify Status: ', result.data);

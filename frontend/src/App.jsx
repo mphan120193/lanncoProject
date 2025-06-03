@@ -20,6 +20,7 @@ import CustomerMessagePage from './pages/CustomerMessagePage';
 import ManageDoctorSchedule from './pages/ManageDoctorSchedule';
 import AppointmentPage from './pages/AppointmentPage';
 import ConfirmMail from './pages/ConfirmMail';
+import DoctorDetailPage from './pages/DoctorDetailPage';
 
 // const ProtectedRoute = ({ children }) => {
 //   const token = localStorage.getItem('accessToken');
@@ -56,6 +57,7 @@ function App() {
           <Route path="/system/customer-message" element={<CustomerMessagePage />} />
           <Route path="/system/manage-doctor-schedule" element={<ManageDoctorSchedule />} />
           <Route path="/confirm-email" element={<ConfirmMail />} />
+          <Route path="/get-doctor-detail/:id" element={<DoctorDetailPage />} />
 
 
 

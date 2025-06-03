@@ -117,7 +117,7 @@ const HomeHeader = () => {
                                         
                                         <React.Fragment key={doctor._id}>
                                             
-                                            <NavDropdown.Item >
+                                            <NavDropdown.Item onClick={() => handleGetDoctorDetail(doctor._id)} >
                                                 {doctor.firstName}
                                             </NavDropdown.Item>
                                             {index < doctorArr.length - 1 && <NavDropdown.Divider />}
