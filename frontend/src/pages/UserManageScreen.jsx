@@ -31,6 +31,9 @@ const UserManageScreen = () => {
     const userRole = useSelector((state) => state.auth.userInfo.roles);
 
     const navigate = useNavigate();
+    
+    
+
     const [triggerGetUser, { data: userDetails }] = useLazyGetAllUserQuery();
 
     const { data: userArrayList, isLoading, isError, error } = useGetAllUserQuery();

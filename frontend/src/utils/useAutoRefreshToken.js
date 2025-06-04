@@ -9,7 +9,7 @@ export const useAutoRefreshToken = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       refetch();
-    }, 14 * 60 * 1000); // every 4 minutes
+    }, 13 * 60 * 1000); // every 13 minutes
 
     return () => clearInterval(interval);
   }, [refetch]);

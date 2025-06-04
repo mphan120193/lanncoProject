@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import './ServicesPage.scss';
 import { Container, Button } from 'react-bootstrap';
 import HomeHeader from '../components/HomeHeader';
@@ -24,6 +24,8 @@ import { useAutoRefreshToken } from '../utils/useAutoRefreshToken.js';
 
 
 
+
+
 const ServicesPage = () => {
     useAutoRefreshToken();
     const generalRef = useRef(null);
@@ -31,8 +33,12 @@ const ServicesPage = () => {
     const restorativeRef = useRef(null);
 
     const handleServiceClick = (ref) => {
-        ref.current?.scrollIntoView({ behavior: 'smooth' }); // Or 'auto' for an immediate jump
+        ref.current?.scrollIntoView({ behavior: 'smooth' }); 
     };
+
+    
+    
+    
 
 
 

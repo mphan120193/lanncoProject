@@ -7,9 +7,6 @@ import HomeHeader from '../components/HomeHeader';
 import Homefooter from '../components/Homefooter';
 import { DayPicker } from 'react-day-picker';
 
-
-
-
 import { toast } from 'react-toastify';
 
 import {useBookAppointmentMutation, useSendConfirmEmailMutation} from '../slices/userApiSlice';
@@ -22,6 +19,7 @@ import Row from 'react-bootstrap/Row';
 
 import { useGetAllCodeQuery } from '../slices/userApiSlice';
 import { useGetDoctorListQuery, useGetScheduleDetailsByDoctorIDandDateMutation } from '../slices/doctorApiSlice';
+
 
 
 

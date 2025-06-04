@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-// import { useGetDoctorsMutation } from '../slices/doctorApiSlice';
+
 
 import { useGetAllCodeQuery } from '../slices/userApiSlice';
 import { useGetDoctorListQuery } from '../slices/doctorApiSlice';
@@ -32,7 +32,7 @@ import { useGetDoctorDetailByIDMutation } from '../slices/doctorApiSlice';
 
 
 const ManageDoctor = () => {
-    //useAutoRefreshToken();
+    useAutoRefreshToken();
     const price = useRef([]);
     const paymentMethod = useRef([]);
     const province = useRef([]);

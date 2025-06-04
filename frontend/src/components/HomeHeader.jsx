@@ -1,15 +1,9 @@
 
 import './HomeHeader.scss';
-
 import { useNavigate } from 'react-router-dom';
-
 import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
-
-
-
 import { useSelector, useDispatch } from 'react-redux';
-
 import { useLogoutMutation } from '../slices/userApiSlice';
 import { useGetDoctorListQuery } from '../slices/doctorApiSlice';
 import { logout } from '../slices/authSlice';
@@ -74,7 +68,7 @@ const HomeHeader = () => {
         
 
         <header className='main-header'>
-            {/* Top Bar for Contact Info */}
+            
             <div className='top-contact-bar bg-primary text-white py-2'>
                 <Container className="d-flex justify-content-between align-items-center">
                     <div className='contact-item'>
@@ -88,7 +82,7 @@ const HomeHeader = () => {
                 </Container>
             </div>
 
-            {/* Main Navigation Bar */}
+            
             <Navbar expand="lg" className="navbar-custom py-3">
                 <Container>
                     <Navbar.Brand onClick={() => { navigate('/home') }} className='navbar-brand-custom'>
@@ -97,14 +91,15 @@ const HomeHeader = () => {
                             src={logoImage} 
                             alt="Sunshine Dental Logo"
                             className="logo-img me-2"
+                            style={{ maxWidth: '150px', height: 'auto' }}
                         />
                         <span className="brand-text">Sunshine Dental</span>
                     </Navbar.Brand>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        {/* Primary Navigation Links */}
-                        <Nav className="mx-auto main-nav-links"> {/* Center the nav links */}
+                        
+                        <Nav className="mx-auto main-nav-links"> 
                             
 
                             <NavDropdown title={<span onClick={() => navigate('/about')} style={{ cursor: 'pointer' }}>
@@ -171,8 +166,8 @@ const HomeHeader = () => {
                             <Nav.Link onClick={() => { navigate('/contact') }}>CONTACT</Nav.Link>
                         </Nav>
 
-                        {/* User Authentication/Profile Section */}
-                        <Nav className="ms-auto auth-nav-links"> {/* Align to the right */}
+                        
+                        <Nav className="ms-auto auth-nav-links"> 
                             {userInfo ? (
                                 <NavDropdown title={userInfo.firstName || 'Profile'} id='user-profile-dropdown'>
                                     <NavDropdown.Item onClick={() => { navigate('/profile') }} to="/profile">Profile</NavDropdown.Item> {/* Example profile link */}

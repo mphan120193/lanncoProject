@@ -1,42 +1,37 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Card, Container } from 'react-bootstrap';
-
 import { toast } from 'react-toastify';
-
-
-
 import { useRegisterMutation } from '../slices/userApiSlice';
-
-import './RegisterScreen.css'; // Import custom CSS for this component
+import './RegisterScreen.css';
 import logoImage from '/Logo.png';
 
+
 const RegisterScreen = () => {
-    const [firstName, setFirstName] = useState(''); // Corrected state variable name to camelCase
-    const [lastName, setLastName] = useState('');   // Corrected state variable name to camelCase
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    
-    const navigate = useNavigate();
-    const [register] = useRegisterMutation(); // Destructure isLoading
 
+    const navigate = useNavigate();
+    const [register] = useRegisterMutation(); 
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        
-         
+
+
 
         if (password !== confirmPassword) {
             toast.error('Passwords do not match');
-            return; // Exit if passwords don't match
+            return;
         }
 
         try {
             const res = await register({ firstName, lastName, email, password }).unwrap();
-            
-            navigate('/login'); // Navigate to dashboard or a success page
+
+            navigate('/login');
         } catch (err) {
             toast.error(err?.data?.message || err.error);
         }
@@ -47,12 +42,12 @@ const RegisterScreen = () => {
             <Container className='register-container'>
                 <Card className='register-card shadow-lg border-0 rounded-4'>
                     <Card.Body className='p-5 text-center'>
-                        {/* Optional: Add a logo for brand consistency */}
+
                         <img
                             src={logoImage}
                             alt="Sunshine Dental Care Logo"
                             className="mb-4 register-logo"
-                            style={{ maxWidth: '100px', height: 'auto' }}
+                            style={{ maxWidth: '320px', height: 'auto' }}
                         />
                         <h1 className='register-title mb-4'>Create Your Account</h1>
                         <p className='register-subtitle text-muted mb-4'>Join Sunshine Dental Care today.</p>
@@ -65,7 +60,7 @@ const RegisterScreen = () => {
                                     value={firstName}
                                     onChange={(e) => setFirstName(e.target.value)}
                                     className='form-control-lg'
-                                    required // Add required attribute for better UX
+                                    required
                                 />
                             </Form.Group>
                             <Form.Group className='mb-3' controlId='lastName'>
@@ -120,7 +115,7 @@ const RegisterScreen = () => {
                                 variant='primary'
                                 className='register-button w-100'
                                 size='lg'
-                                
+
                             >
                                 Register
                             </Button>

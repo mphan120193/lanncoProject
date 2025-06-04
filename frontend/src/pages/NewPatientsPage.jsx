@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import './NewPatientsPage.scss';
 import { Container } from 'react-bootstrap';
 import HomeHeader from '../components/HomeHeader';
@@ -21,9 +21,14 @@ import { useAutoRefreshToken } from '../utils/useAutoRefreshToken.js';
 
 
 
+
+
 const NewPatientsPage = () => {
 
     useAutoRefreshToken();
+    
+    
+    
 
 
 

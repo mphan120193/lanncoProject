@@ -4,29 +4,31 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Button, Container } from 'react-bootstrap';
 import logoIcon from '../assets/images/logoIcon.png';
+import logoImage from '/Logo.png';
 import { useState } from 'react';
-import {useCreateGetInTouchMessageMutation} from '../slices/userApiSlice';
+import { useCreateGetInTouchMessageMutation } from '../slices/userApiSlice';
 import { toast } from 'react-toastify';
 
-import {useGetInTouchSendConfirmEmailMutation,
-    } from '../slices/userApiSlice';
+import {
+    useGetInTouchSendConfirmEmailMutation,
+} from '../slices/userApiSlice';
 
 
 const Homefooter = () => {
 
-    const [name, setName]= useState('');
+    const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [email, setEmail]= useState('');
-    const [message, setMessage]= useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
     const [createMessage] = useCreateGetInTouchMessageMutation();
 
     const [sendConfirmEmail] = useGetInTouchSendConfirmEmailMutation();
 
-    const handleSubmit = async()=>{
-        
+    const handleSubmit = async () => {
 
-        try{
-            let resMessage = await createMessage({name, phoneNumber, email, message});
+
+        try {
+            let resMessage = await createMessage({ name, phoneNumber, email, message });
             console.log(resMessage);
             setName('');
             setPhoneNumber('');
@@ -37,7 +39,7 @@ const Homefooter = () => {
                 to: 'mphan120193@gmail.com',
                 subject: 'Get In Touch Email from Front End',
                 message: "Hello",
-                messageDetail: {name, phoneNumber, email, message},
+                messageDetail: { name, phoneNumber, email, message },
                 responseDetail: resMessage.data.messageRes,
             }
 
@@ -49,8 +51,7 @@ const Homefooter = () => {
 
 
 
-        }catch(e)
-        {
+        } catch (e) {
             console.log(e);
         }
 
@@ -68,7 +69,7 @@ const Homefooter = () => {
                     <Row className='get-in-touch-custom-row'>
                         <Col className='custom-Col'>
                             <div className='custom-input'>
-                                <input type='text' placeholder='Name*' value={name} onChange={(e)=>setName(e.target.value)}></input>
+                                <input type='text' placeholder='Name*' value={name} onChange={(e) => setName(e.target.value)}></input>
 
                             </div>
 
@@ -78,7 +79,7 @@ const Homefooter = () => {
                         </Col>
                         <Col className='custom-Col'>
                             <div className='custom-input'>
-                                <input type='text' placeholder='Phone*' value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)}></input>
+                                <input type='text' placeholder='Phone*' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}></input>
 
                             </div>
 
@@ -90,7 +91,7 @@ const Homefooter = () => {
                     <Row className='get-in-touch-custom-row'>
                         <Col>
                             <div className='custom-input'>
-                                <input type='email' placeholder='Email*' value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+                                <input type='email' placeholder='Email*' value={email} onChange={(e) => setEmail(e.target.value)}></input>
 
                             </div>
                         </Col>
@@ -100,7 +101,7 @@ const Homefooter = () => {
                     <Row className='get-in-touch-custom-row'>
                         <Col>
                             <div className='custom-input'>
-                                <input type='text' placeholder='Message*' value={message} onChange={(e)=>setMessage(e.target.value)}></input>
+                                <input type='text' placeholder='Message*' value={message} onChange={(e) => setMessage(e.target.value)}></input>
 
                             </div>
                         </Col>
@@ -130,9 +131,9 @@ const Homefooter = () => {
                     <Row className='custom-row'>
                         <Col className='d-flex'>
                             <div className='logo'>
-                                <img className='image' src={logoIcon} alt='logo'></img>
+                                <img className='image' src={logoImage} alt='logo'></img>
                             </div>
-                            <div className='branch'>SunShine <span className='branch-dental'>Dental</span></div>
+                            <div className='branch'>SunShine Dental</div>
 
                         </Col>
                         <Col className='phone-address-col'>
@@ -159,6 +160,10 @@ const Homefooter = () => {
 
             </div>
 
+
+
+
+
             <div className='copy-right-section'>
                 <p>&copy; SunShine Dental | Sitemap | Accessibility | Website by Hao Phan
                     {/* <a href='https://www.youtube.com/watch?v=147SkAVXEqM&t=120s' target="_blank" > &#8594; Click here &#8592;</a> */}
@@ -171,6 +176,8 @@ const Homefooter = () => {
 
 
         </div>
+
+        
 
     );
 

@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Buffer } from 'buffer';
 import ReactMarkdown from 'react-markdown';
+import { useAutoRefreshToken } from '../utils/useAutoRefreshToken.js';
 
 
 
@@ -26,6 +27,7 @@ import ReactMarkdown from 'react-markdown';
 
 
 const DoctorDetailPage = () => {
+    useAutoRefreshToken();
     const { id } = useParams();
     let doctorID = id;
 

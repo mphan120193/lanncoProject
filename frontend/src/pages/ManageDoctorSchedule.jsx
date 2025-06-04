@@ -4,14 +4,9 @@ import { Container, Form } from 'react-bootstrap';
 import Header from '../components/Header';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-//import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-// import { useGetDoctorsMutation } from '../slices/doctorApiSlice';
-// import { useGetAllCodesMutation } from '../slices/usersApiSlice';
-// import {
-//      useGetScheduleByDoctorIDandDateMutation,
-//     useGetScheduleListByDoctorIDDateMutation,
-// } from '../slices/doctorApiSlice';
+
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 //import { toast } from 'react-toastify';
@@ -19,6 +14,7 @@ import Table from 'react-bootstrap/Table';
 import { useSelector } from 'react-redux';
 import { ROLES_LIST } from '../utils/roles_list';
 import {useGetDoctorListQuery, useGetScheduleListByDoctorIDDateMutation} from '../slices/doctorApiSlice';
+
 
 
 
@@ -105,6 +101,10 @@ const ManageDoctorSchedule = () => {
         fetchData();
 
     }, [selectedDate, selectedDoctor])
+
+    
+
+
 
     const { data: doctorArrList, isLoading, isError, error } = useGetDoctorListQuery();
 

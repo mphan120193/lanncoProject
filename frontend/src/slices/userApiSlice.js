@@ -1,21 +1,35 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { logout } from './authSlice';
+
+
 const backendURL = import.meta.env.VITE_BACKEND_URL;
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
-  let token = localStorage.getItem('accessToken'); 
+  let token = localStorage.getItem('accessToken');
 
   const baseQuery = fetchBaseQuery({
     baseUrl: backendURL,
-    credentials: 'include', 
+    credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
       if (token) {
-        headers.set('authorization', `Bearer ${token}`); 
+        headers.set('authorization', `Bearer ${token}`);
       }
       return headers;
     },
   });
 
   let result = await baseQuery(args, api, extraOptions);
+
+  if (result.error && (result.error.originalStatus === 401 || result.error.originalStatus === 403)) {
+    console.error('Access denied or unauthorized! Logging out...');
+    
+    api.dispatch(logout());
+    
+    localStorage.clear();
+
+
+  }
+
   return result;
 };
 
@@ -25,7 +39,7 @@ export const userApi = createApi({
   baseQuery: baseQueryWithReauth,
 
   endpoints: (builder) => ({
-    
+
     register: builder.mutation({
       query: (data) => ({
         url: '/auth/register',
@@ -51,7 +65,7 @@ export const userApi = createApi({
       })
     })
 
-    , 
+    ,
     refresh: builder.mutation({
       query: () => ({
         url: '/auth/refresh',
@@ -68,12 +82,12 @@ export const userApi = createApi({
       providesTags: ['UserList'],
     }),
 
-    
-    
-  
 
 
-    
+
+
+
+
 
 
     deleteUser: builder.mutation({
@@ -180,13 +194,13 @@ export const {
   useLoginMutation,
   useRefreshMutation,
   useLogoutMutation,
-  useRefreshTokenQuery, 
+  useRefreshTokenQuery,
   useGetAllUserQuery,
-  useDeleteUserMutation, 
-  useGetAllCodeQuery, 
+  useDeleteUserMutation,
+  useGetAllCodeQuery,
   useRegisterWImageMutation,
   useLazyGetAllUserQuery,
-  useEditUserMutation, 
+  useEditUserMutation,
   useCreateGetInTouchMessageMutation,
   useGetInTouchSendConfirmEmailMutation,
   useGetAllMessageQuery,
@@ -194,6 +208,6 @@ export const {
   useBookAppointmentMutation,
   useSendConfirmEmailMutation,
   useVerifyEmailMutation
-  
+
 
 } = userApi;

@@ -1,5 +1,5 @@
 import './Login.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { useLoginMutation } from '../redux/api';
 import { toast } from 'react-toastify';
@@ -9,125 +9,109 @@ import logoImage from '/Logo.png';
 import { useDispatch } from 'react-redux';
 import { setCredentials, logout } from '../slices/authSlice';
 
-import { useLogoutMutation } from '../slices/userApiSlice';
+
 
 
 
 const Login = () => {
 
   
-
-  
-  
-  const [logOut] = useLogoutMutation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [login] = useLoginMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    const clearUp = async ()=>{
-      try{
-        await logOut().unwrap();
-        dispatch(logout());
-        localStorage.clear();
-      }catch(e){
-        console.log('Clear Up error: ', e);
-      }
-
-    }
-    clearUp();
-  }, [])
+  
 
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    
+
 
     try {
-      
+
       const res = await login({ email, password }).unwrap();
-      
+
       localStorage.setItem('accessToken', res.accessToken);
 
-      
 
-      dispatch(setCredentials({ _id: res._id , roles: res.roles, firstName: res.firstName}));
 
-        
-     
+      dispatch(setCredentials({ _id: res._id, roles: res.roles, firstName: res.firstName }));
 
-      
-      
+
+
+
+
+
       navigate('/home');
-      
+
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
   };
 
-  
+
   return (
     <div className='login-screen-wrapper d-flex align-items-center justify-content-center py-5'>
-        <Container className='login-container'>
-            <Card className='login-card shadow-lg border-0 rounded-4'>
-                <Card.Body className='p-5 text-center'>
-                    {/* Optional: Add a logo here for brand consistency */}
-                    <img
-                        src={logoImage} 
-                        alt="Sunshine Dental Care Logo"
-                        className="mb-4 login-logo"
-                        style={{ maxWidth: '100px', height: 'auto' }}
-                    />
-                    <h1 className='login-title mb-4'>Welcome Back!</h1>
-                    <p className='login-subtitle text-muted mb-4'>Sign in to manage your appointments.</p>
+      <Container className='login-container'>
+        <Card className='login-card shadow-lg border-0 rounded-4'>
+          <Card.Body className='p-5 text-center'>
 
-                    <Form onSubmit={handleLogin}>
-                        <Form.Group className='mb-3' controlId='email'>
-                            <Form.Control
-                                type='email'
-                                placeholder='Enter email'
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className='form-control-lg' // Larger input fields
-                                autoComplete='email' // Enable browser auto-fill
-                            />
-                        </Form.Group>
+            <img
+              src={logoImage}
+              alt="Sunshine Dental Care Logo"
+              className="mb-4 login-logo"
+              style={{ maxWidth: '320px', height: 'auto' }}
+            />
+            <h1 className='login-title mb-4'>Welcome Back!</h1>
+            <p className='login-subtitle text-muted mb-4'>Sign in to manage your appointments.</p>
 
-                        <Form.Group className='mb-4' controlId='password'>
-                            <Form.Control
-                                type='password'
-                                placeholder='Enter password'
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className='form-control-lg' // Larger input fields
-                                autoComplete='current-password' // Enable browser auto-fill
-                            />
-                        </Form.Group>
+            <Form onSubmit={handleLogin}>
+              <Form.Group className='mb-3' controlId='email'>
+                <Form.Control
+                  type='email'
+                  placeholder='Enter email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className='form-control-lg'
+                  autoComplete='email'
+                />
+              </Form.Group>
 
-                        <Button
-                            type='submit'
-                            variant='primary'
-                            className='login-button w-100' // Full width button
-                            size='lg' // Larger button
-                        >
-                            Sign In
-                        </Button>
-                    </Form>
+              <Form.Group className='mb-4' controlId='password'>
+                <Form.Control
+                  type='password'
+                  placeholder='Enter password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className='form-control-lg'
+                  autoComplete='current-password'
+                />
+              </Form.Group>
 
-                    <div className='mt-4 text-center'>
-                        <p className='text-muted'>
-                            Don't have an account? <Link to='/register' className='register-link'>Register Here</Link>
-                        </p>
-                        
-                    </div>
-                </Card.Body>
-            </Card>
-        </Container>
+              <Button
+                type='submit'
+                variant='primary'
+                className='login-button w-100'
+                size='lg'
+              >
+                Sign In
+              </Button>
+            </Form>
+
+            <div className='mt-4 text-center'>
+              <p className='text-muted'>
+                Don't have an account? <Link to='/register' className='register-link'>Register Here</Link>
+              </p>
+
+            </div>
+          </Card.Body>
+        </Card>
+      </Container>
     </div>
-);
+  );
 };
 
 export default Login;

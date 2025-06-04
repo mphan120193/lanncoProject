@@ -2,7 +2,6 @@ import React from 'react';
 import './HomePage.scss';
 import { Container } from 'react-bootstrap';
 import { useAutoRefreshToken } from '../utils/useAutoRefreshToken.js';
-
 import welcomePic from '../assets/images/welcome.jpg';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,17 +12,7 @@ import CleaningAndExamsIcon from '../assets/images/teethtarget.png';
 import HomeHeader from '../components/HomeHeader';
 import DentalControlledCarousel from '../components/DentalControlledCarousel';
 import Homefooter from '../components/Homefooter';
-
-
-
 import { useNavigate } from 'react-router-dom';
-
-
-
-
-
-
-
 
 
 

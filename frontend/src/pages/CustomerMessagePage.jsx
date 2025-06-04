@@ -14,12 +14,14 @@ import { useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { ROLES_LIST } from '../utils/roles_list';
+import { useAutoRefreshToken } from '../utils/useAutoRefreshToken.js';
+
 
 
 
 
 const CustomerMessagePage = () => {
-
+    useAutoRefreshToken();
     const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const [messageDetail, setMessageDetail] = useState('');
