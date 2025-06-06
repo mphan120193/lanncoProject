@@ -184,6 +184,15 @@ export const userApi = createApi({
       }),
     }),
 
+    getAppointmentByUserID: builder.query({
+      query: (params) => ({
+        url: `/auth/get-appointments-by-user-id`,
+        method: 'GET',
+        params: params,
+      }),
+      providesTags: ['AppointmentList'],
+    }),
+
 
 
   })
@@ -207,7 +216,8 @@ export const {
   useUpdateStatusCustomerMessageMutation,
   useBookAppointmentMutation,
   useSendConfirmEmailMutation,
-  useVerifyEmailMutation
+  useVerifyEmailMutation,
+  useGetAppointmentByUserIDQuery
 
 
 } = userApi;

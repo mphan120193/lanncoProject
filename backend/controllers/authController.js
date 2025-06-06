@@ -288,13 +288,14 @@ const bookAppointment = async (req, res) => {
     if (req.body) {
       const { doctorId, time, date, name, phoneNumber, email, message } = req.body;
       //console.log({ doctorId, time, date, name, phoneNumber, email, message });
+      const hashedPassword = await bcrypt.hash('123456', 10);
       const userExists = await User.findOne({ email: email });
       if (!userExists) {
         const user = await User.create({
           firstName: name,
           lastName: 'Unknown',
           email: email,
-          password: '123456',
+          password: hashedPassword,
           address: '',
           roleID: 'R3',
           phoneNumber: phoneNumber,
@@ -430,6 +431,25 @@ const verifyEmail = async (req, res) =>{
   }
 }
 
+const getAppointment = async (req, res)=> {
+  try {
+    let userID= req.query.id;
+    console.log('User ID from client: ', userID);
+    if(userID){
+      let result = await DentalBooking.find({patientID: userID});
+      console.log('Result check; ',result)
+      if(result){
+        res.status(200).json(result);
+      }
+    }
+    
+  } catch (error) {
+    console.log(error);
+        res.status(200).json({
+            message: 'Error From Server'
+        })
+  }
+}
 
 
 
@@ -438,5 +458,5 @@ export {
   getAllusers, deleteUser, getAllCode, createUser, editUser,
   createGetInTouchMessage,
   sendGetInTouchEmail, getAllCustomerMessage, updateStatusCustomerMessage,
-  bookAppointment, sendConfirmEmail, verifyEmail
+  bookAppointment, sendConfirmEmail, verifyEmail, getAppointment
 };

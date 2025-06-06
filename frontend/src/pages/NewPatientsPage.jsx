@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import './NewPatientsPage.scss';
 import { Container } from 'react-bootstrap';
 import HomeHeader from '../components/HomeHeader';
-
+import { useNavigate } from 'react-router-dom';
 import Homefooter from '../components/Homefooter';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -26,6 +26,7 @@ import { useAutoRefreshToken } from '../utils/useAutoRefreshToken.js';
 const NewPatientsPage = () => {
 
     useAutoRefreshToken();
+    const navigate = useNavigate();
     
     
     
@@ -64,7 +65,7 @@ const NewPatientsPage = () => {
                                 During your initial appointment, we will perform various tests to assess the condition of your oral health and to create a dental plan based on your unique, individual needs.
                                 We look forward to meeting you! <br></br> <br></br>
 
-                                For more information on your initial visit or to <span className='darker-text'><u>request an appointment,</u></span>
+                                For more information on your initial visit or to <span className='darker-text'><u onClick={() => { navigate('/appointment') }}>request an appointment,</u></span>
                                 please don’t hesitate to contact us today at <span className='darker-text'><u>(727) 527-4955!</u></span>
 
                             </div>

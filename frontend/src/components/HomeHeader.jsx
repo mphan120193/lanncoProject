@@ -15,25 +15,25 @@ import React from 'react';
 
 
 const HomeHeader = () => {
-    
+
     const { userInfo } = useSelector((state) => state.auth);
 
     const navigate = useNavigate();
-    
+
     const { data: doctorArrList, isLoading, isError, error } = useGetDoctorListQuery();
 
-   const doctorArr = doctorArrList?.data;
+    const doctorArr = doctorArrList?.data;
 
-   
 
-    
-    
-    
+
+
+
+
     const dispatch = useDispatch();
     const [logoutApiCall] = useLogoutMutation();
-    
 
- 
+
+
 
     const handleGetDoctorDetail = (doctorID) => {
         console.log('Selected doctor ID ', doctorID);
@@ -45,7 +45,7 @@ const HomeHeader = () => {
 
     }
 
-    
+
 
     const logoutHandler = async () => {
 
@@ -64,11 +64,11 @@ const HomeHeader = () => {
     return (
 
 
-        
-        
+
+
 
         <header className='main-header'>
-            
+
             <div className='top-contact-bar bg-primary text-white py-2'>
                 <Container className="d-flex justify-content-between align-items-center">
                     <div className='contact-item'>
@@ -82,13 +82,13 @@ const HomeHeader = () => {
                 </Container>
             </div>
 
-            
+
             <Navbar expand="lg" className="navbar-custom py-3">
                 <Container>
                     <Navbar.Brand onClick={() => { navigate('/home') }} className='navbar-brand-custom'>
-                        
+
                         <img
-                            src={logoImage} 
+                            src={logoImage}
                             alt="Sunshine Dental Logo"
                             className="logo-img me-2"
                             style={{ maxWidth: '150px', height: 'auto' }}
@@ -98,20 +98,20 @@ const HomeHeader = () => {
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        
-                        <Nav className="mx-auto main-nav-links"> 
-                            
+
+                        <Nav className="mx-auto main-nav-links">
+
 
                             <NavDropdown title={<span onClick={() => navigate('/about')} style={{ cursor: 'pointer' }}>
                                 ABOUT
                             </span>} id="about-nav-dropdown">
-                                
-                           
-                            {doctorArr && doctorArr.length > 0 ? (
+
+
+                                {doctorArr && doctorArr.length > 0 ? (
                                     doctorArr.map((doctor, index) => (
-                                        
+
                                         <React.Fragment key={doctor._id}>
-                                            
+
                                             <NavDropdown.Item onClick={() => handleGetDoctorDetail(doctor._id)} >
                                                 {doctor.firstName}
                                             </NavDropdown.Item>
@@ -121,35 +121,20 @@ const HomeHeader = () => {
                                 ) : (
                                     <NavDropdown.Item disabled>No Doctors Available</NavDropdown.Item>
                                 )}
-                                
-                                
-                                
+
+
+
                             </NavDropdown>
 
-                            <NavDropdown title={<span onClick={() => navigate('/new-patient')} style={{ cursor: 'pointer' }}>
-                                NEW PATIENT
-                            </span>} id="new-patient-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.4">
-                                    Your First Visit
-                                </NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">
-                                    Finanical Information
-                                </NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">
-                                    Online Form
-                                </NavDropdown.Item>
-
-                                
-                            </NavDropdown>
+                            
+                            <Nav.Link onClick={() => { navigate('/new-patient') }} > NEW PATIENT</Nav.Link>
 
                             <Nav.Link onClick={() => { navigate('/appointment') }} to="/appointment">APPOINTMENTS</Nav.Link>
 
 
                             <NavDropdown title="SERVICES" id="services-nav-dropdown" onClick={() => { navigate('/services') }}>
 
-                            <NavDropdown.Item href="#action/3.4">
+                                <NavDropdown.Item href="#action/3.4">
                                     General Dentistry
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
@@ -160,17 +145,17 @@ const HomeHeader = () => {
                                 <NavDropdown.Item href="#action/3.4">
                                     Restorative Dentistry
                                 </NavDropdown.Item>
-                                
+
                             </NavDropdown>
 
                             <Nav.Link onClick={() => { navigate('/contact') }}>CONTACT</Nav.Link>
                         </Nav>
 
-                        
-                        <Nav className="ms-auto auth-nav-links"> 
+
+                        <Nav className="ms-auto auth-nav-links">
                             {userInfo ? (
                                 <NavDropdown title={userInfo.firstName || 'Profile'} id='user-profile-dropdown'>
-                                    <NavDropdown.Item onClick={() => { navigate('/profile') }} to="/profile">Profile</NavDropdown.Item> {/* Example profile link */}
+                                    <NavDropdown.Item onClick={() => { navigate(`/profile/${userInfo._id}`) }}>Profile</NavDropdown.Item>
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item onClick={logoutHandler}>
                                         Logout
@@ -178,12 +163,12 @@ const HomeHeader = () => {
                                 </NavDropdown>
                             ) : (
                                 <>
-                                    <Nav.Link  to="/login" className="me-2">
+                                    <Nav.Link to="/login" className="me-2">
                                         <Button onClick={() => { navigate('/login') }} variant="outline-primary" className="header-auth-button">
                                             <FaSignInAlt className='me-1' /> Sign In
                                         </Button>
                                     </Nav.Link>
-                                    <Nav.Link  to="/register">
+                                    <Nav.Link to="/register">
                                         <Button onClick={() => { navigate('/register') }} variant="primary" className="header-auth-button">
                                             <FaUserPlus className='me-1' /> Register
                                         </Button>

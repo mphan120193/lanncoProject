@@ -13,6 +13,7 @@ export const PATHS = {
     SERVICES: '/services',
     CONTACT: '/contact',
 
+    PROFILE: '/profile/:id',
     CONFIRM_EMAIL: '/confirm-email',
     GET_DOCTOR_DETAIL: '/get-doctor-detail/:id',
     SYSTEM_USER_MANAGE: '/system/user-manage',

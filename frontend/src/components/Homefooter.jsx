@@ -3,7 +3,7 @@ import React from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Button, Container } from 'react-bootstrap';
-import logoIcon from '../assets/images/logoIcon.png';
+
 import logoImage from '/Logo.png';
 import { useState } from 'react';
 import { useCreateGetInTouchMessageMutation } from '../slices/userApiSlice';
@@ -119,11 +119,22 @@ const Homefooter = () => {
                 </Container>
             </div>
 
-            <div className='maps-section'>
+            {/* <div className='maps-section'>
+                <iframe
+                    title='maps'
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7056.945343824706!2d-82.64972508855168!3d27.82599822014792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2e6aa60fc761b%3A0x7e2296a04781c9cd!2s5918%20Dr%20M.L.K.%20Jr%20St%20N%2C%20St.%20Petersburg%2C%20FL%2033703!5e0!3m2!1sen!2sus!4v1749179516014!5m2!1sen!2sus"
 
-                <iframe title='maps' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7056.945343818122!2d-82.64971972502076!3d27.82599822024919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2e6aa60fc761b%3A0x7e2296a04781c9cd!2s5918%20Dr%20M.L.K.%20Jr%20St%20N%2C%20St.%20Petersburg%2C%20FL%2033703!5e0!3m2!1sen!2sus!4v1744514699863!5m2!1sen!2sus" width="100%" height="100%" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                    width="100%" 
+                    height="100%"
+                    style={{ border: 0 }} 
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
 
-            </div>
+
+
+            </div> */}
 
 
             <div className='contact-infor-section'>
@@ -133,7 +144,7 @@ const Homefooter = () => {
                             <div className='logo'>
                                 <img className='image' src={logoImage} alt='logo'></img>
                             </div>
-                            <div className='branch'>SunShine Dental</div>
+                            
 
                         </Col>
                         <Col className='phone-address-col'>
@@ -177,7 +188,7 @@ const Homefooter = () => {
 
         </div>
 
-        
+
 
     );
 

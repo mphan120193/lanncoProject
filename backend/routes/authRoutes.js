@@ -11,7 +11,7 @@ import { getAllusers, deleteUser, getAllCode, createUser, editUser,
     updateStatusCustomerMessage,
     bookAppointment, 
     sendConfirmEmail, 
-    verifyEmail } from '../controllers/authController.js';
+    verifyEmail, getAppointment } from '../controllers/authController.js';
 
 
 const router = express.Router();
@@ -289,6 +289,8 @@ router.post('/book-appointment', verifyJWT, bookAppointment);
 
 router.post('/send-confirm-email', verifyJWT, sendConfirmEmail);
 router.post('/verify', verifyJWT, verifyEmail);
+
+router.get('/get-appointments-by-user-id', verifyJWT, getAppointment);
 
 
 

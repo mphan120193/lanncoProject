@@ -21,6 +21,7 @@ import ManageDoctorSchedule from './pages/ManageDoctorSchedule';
 import AppointmentPage from './pages/AppointmentPage';
 import ConfirmMail from './pages/ConfirmMail';
 import DoctorDetailPage from './pages/DoctorDetailPage';
+import ProfilePage from './pages/ProfilePage';
 
 const ProtectedRoute = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -76,6 +77,8 @@ function App() {
           <Route path={PATHS.SERVICES} element={<ServicesPage />} />
           <Route path={PATHS.CONTACT} element={<ContactPage />} />
 
+          <Route path={PATHS.PROFILE} element={<ProfilePage />} />
+
           <Route path={PATHS.SYSTEM_USER_MANAGE} element={<UserManageScreen />} />
           <Route path={PATHS.SYSTEM_CREATE_NEW_USER} element={<CreateNewUser />} />
           <Route path={PATHS.SYSTEM_MANAGE_DOCTOR} element={<ManageDoctor />} />
@@ -84,6 +87,7 @@ function App() {
           <Route path={PATHS.SYSTEM_MANAGE_DOCTOR_SCHEDULE} element={<ManageDoctorSchedule />} />
           <Route path={PATHS.CONFIRM_EMAIL} element={<ConfirmMail />} />
           <Route path={PATHS.GET_DOCTOR_DETAIL} element={<DoctorDetailPage />} />
+
 
 
 
