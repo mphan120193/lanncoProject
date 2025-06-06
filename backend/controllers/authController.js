@@ -1,5 +1,4 @@
 import User from '../models/userModel.js';
-import verifyJWT from '../middlewares/verifyJWT.js';
 import Allcodes from '../models/allcodesModel.js';
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from "uuid";

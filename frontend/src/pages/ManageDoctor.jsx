@@ -35,15 +35,13 @@ const ManageDoctor = () => {
     useAutoRefreshToken();
     const price = useRef([]);
     const paymentMethod = useRef([]);
-    const province = useRef([]);
+    
     const doctor = useRef([]);
 
     const [selectedDoctor, setselectedDoctor] = useState();
     const [selectedPrice, setSelectedPrice] = useState('');
     const [selectedPayment, setSelectedPayment] = useState('');
-    const [selectedProvince, setSelectedProvince] = useState('');
-    const [clinicName, setClinicName] = useState('');
-    const [clinicAddress, setClinicAddress] = useState('');
+    
     const [note, setNote] = useState('');
     const [description, setDescription] = useState('');
     const [getDoctorDetail] = useGetDoctorDetailByIDMutation();
@@ -73,9 +71,7 @@ const ManageDoctor = () => {
             console.log(selectedDoctor);
             setSelectedPrice('');
             setSelectedPayment('');
-            setSelectedProvince('');
-            setClinicName('');
-            setClinicAddress('');
+            
             setDescription('');
             setNote('');
 
@@ -89,18 +85,17 @@ const ManageDoctor = () => {
                 }
                 
                 if (data.doctorInfo[0].additionalDoctorinfo[0]) {
-                    setClinicName(data.doctorInfo[0].additionalDoctorinfo[0].clinicName);
-                    setClinicAddress(data.doctorInfo[0].additionalDoctorinfo[0].clinicAddress);
+                    
                     setNote(data.doctorInfo[0].additionalDoctorinfo[0].note);
                     
                     const foundPrice = price.current.find(item => item.key === data.doctorInfo[0].additionalDoctorinfo[0].priceID);
                     const foundPayment = paymentMethod.current.find(item => item.key === data.doctorInfo[0].additionalDoctorinfo[0].paymentID);
-                    const foundProvince = province.current.find(item => item.key === data.doctorInfo[0].additionalDoctorinfo[0].provinceID);
+                    
 
                     
                     setSelectedPrice(foundPrice.key);
                     setSelectedPayment(foundPayment.key);
-                    setSelectedProvince(foundProvince.key);
+                    
 
 
                 }
@@ -125,11 +120,11 @@ const ManageDoctor = () => {
 
 
 
-    const { data: provinceListArrRS, isLoading: isProvinceLoading, isError: isProvinceError, error: provinceError } = useGetAllCodeQuery({ type: "PROVINCE" });
+    
 
     const priceListArr = priceListArrRs || [];
     const paymentListArr = paymentListArrRS || [];
-    const provinceListArr = provinceListArrRS || [];
+    
     const doctorListArr = doctorArrList?.data || [];
 
    
@@ -141,21 +136,19 @@ const ManageDoctor = () => {
         if(paymentListArr){
             paymentMethod.current= paymentListArr.allcode
         }
-        if(provinceListArr){
-            province.current=provinceListArr.allcode
-        }
+        
         if(doctorListArr){
             doctor.current = doctorListArr
         }
 
-    }, [priceListArr, paymentListArr, provinceListArr, doctorListArr])
+    }, [priceListArr, paymentListArr, doctorListArr])
 
     
 
     // Combine loading states
-    const overallLoading = isPriceLoading || isPaymentLoading || isProvinceLoading;
+    const overallLoading = isPriceLoading || isPaymentLoading ;
     // Combine error states
-    const overallError = isPriceError || isPaymentError || isProvinceError;
+    const overallError = isPriceError || isPaymentError ;
 
     // 1. Handle overall loading state
     if (overallLoading) {
@@ -167,7 +160,7 @@ const ManageDoctor = () => {
         // You might want to log specific errors for debugging
         console.error('PriceError:', priceError);
         console.error('Payment Error:', paymentError);
-        console.error('Province Error:', provinceError);
+        
         return <div>Error loading code lists. Please try again.</div>;
     }
     
@@ -193,9 +186,6 @@ const ManageDoctor = () => {
         console.log('Doctor Description: ', description);
         console.log('selected Price: ', selectedPrice);
         console.log('Selected payment: ', selectedPayment);
-        console.log('selected province: ', selectedProvince);
-        console.log('Clinic name: ', clinicName);
-        console.log('Clinic Address : ', clinicAddress);
         console.log('Clinic Note: ', note);
         console.log('markdown: ', markdown);
         console.log('Content HTML: ', contentHTML);
@@ -211,9 +201,7 @@ const ManageDoctor = () => {
                 contentHTML: contentHTML,
                 price: selectedPrice,
                 payment: selectedPayment,
-                province: selectedProvince,
-                clinicName: clinicName,
-                clinicAddress: clinicAddress,
+                
                 clinicNote: note,
             });
 
@@ -225,9 +213,7 @@ const ManageDoctor = () => {
                 setDescription('');
                 setSelectedPrice('');
                 setSelectedPayment('');
-                setSelectedPrice('');
-                setClinicName('');
-                setClinicAddress('');
+                
                 setNote('');
                 setMarkdown('');
                 setContentHTML('')
@@ -333,41 +319,10 @@ const ManageDoctor = () => {
                             })}
                         </Form.Control>
                     </Col>
-                    <Col>
-                        <div >Province</div>
-                        <Form.Control as="select" value={selectedProvince} onChange={(e) => setSelectedProvince(e.target.value)}>
-                            <option value="">
-                                Select a province...
-                            </option>
-
-                            {province.current.map((item, index) => {
-
-                                return (
-
-                                    <option value={item.key} key={item._id} >{item.value_en}</option>
-
-
-                                )
-                            })}
-                        </Form.Control>
-
-                    </Col>
+                    
                 </Row>
                 <Row className="custom-row">
-                    <Col><div >Clinic Name</div>
-                        <Form.Control
-                            as="textarea"
-
-                            value={clinicName}
-                            onChange={(e) => setClinicName(e.target.value)}
-                        ></Form.Control></Col>
-                    <Col><div >Clinic Address</div>
-                        <Form.Control
-                            as="textarea"
-
-                            value={clinicAddress}
-                            onChange={(e) => setClinicAddress(e.target.value)}
-                        ></Form.Control></Col>
+                    
                     <Col><div >Note</div>
                         <Form.Control
                             as="textarea"

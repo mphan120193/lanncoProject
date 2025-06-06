@@ -74,7 +74,7 @@ const ManageDoctorSchedule = () => {
 
                         const scheduleRes = await getScheduleList(queryParams).unwrap();
                         
-                        //console.log('schedule list: ', scheduleRes);
+                        
                         if (scheduleRes) {
                             setScheduleList(scheduleRes);
                         }

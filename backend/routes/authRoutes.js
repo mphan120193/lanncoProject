@@ -16,36 +16,10 @@ import { getAllusers, deleteUser, getAllCode, createUser, editUser,
 
 const router = express.Router();
 
-// const generateTokens = (user) => {
-//     const accessToken = jwt.sign(
-//         {
-//             "UserInfo": {
-//                 "userId": user._id,
-//                 "roles": user.roles
 
-//             }
-
-
-//         },
-//         process.env.JWT_SECRET,
-//         { expiresIn: '2m' }
-//     );
-//     const refreshToken = jwt.sign(
-//         { userId: user._id },
-//         process.env.JWT_REFRESH_SECRET,
-//         { expiresIn: '7d' }
-//     );
-//     return { accessToken, refreshToken };
-// };
 
 router.post('/register', async (req, res) => {
-    // const { email, password, roles } = req.body;
-
     
-    // const hashedPassword = await bcrypt.hash(password, 10);
-    // const user = new User({ email, password: hashedPassword, roles });
-    // await user.save();
-    // res.status(201).json({ message: 'User created' });
 
     const { firstName, lastName, email, password,
         address, phoneNumber, genderID, positionID } = req.body;
@@ -160,6 +134,23 @@ router.post('/login', async (req, res) => {
      });
 });
 
+
+
+router.post('/logout', async (req, res) => {
+    const cookies = req.cookies;
+    if (!cookies?.jwt) return res.sendStatus(204);
+
+    const refreshToken = cookies.jwt;
+    const user = await User.findOne({ refreshToken });
+    if (user) {
+        // user.refreshToken = '';
+        user.refreshToken = user.refreshToken.filter(rt => rt !== refreshToken);
+        await user.save();
+    }
+    res.clearCookie('jwt');
+    res.json({ message: 'Logged out' });
+});
+
 router.get('/refresh',verifyJWT, async (req, res) => {
     //console.log(' Enter the refresh......')
     const cookies = req.cookies;
@@ -257,20 +248,7 @@ router.get('/refresh',verifyJWT, async (req, res) => {
 
 });
 
-router.post('/logout', async (req, res) => {
-    const cookies = req.cookies;
-    if (!cookies?.jwt) return res.sendStatus(204);
 
-    const refreshToken = cookies.jwt;
-    const user = await User.findOne({ refreshToken });
-    if (user) {
-        // user.refreshToken = '';
-        user.refreshToken = user.refreshToken.filter(rt => rt !== refreshToken);
-        await user.save();
-    }
-    res.clearCookie('jwt');
-    res.json({ message: 'Logged out' });
-});
 
 
 

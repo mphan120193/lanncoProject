@@ -60,7 +60,9 @@ app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 app.use('/api/doctor',verifyJWT, doctorRoutes);
 
-// Protected route example
+
+
+// Protected with JWT and Role  example
 // app.use('/api/protected', verifyJWT, verifyRoles(ROLES_LIST.Amdin), (req, res) => {
 //   res.json({ message: `Hello user ${req.userId}, this is protected.` });
 // });
