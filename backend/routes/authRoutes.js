@@ -4,7 +4,14 @@ import jwt from 'jsonwebtoken';
 import User from '../models/userModel.js';
 import { ROLES_LIST } from '../config/roles_list.js';
 import verifyJWT from '../middlewares/verifyJWT.js';
-
+import { getAllusers, deleteUser, getAllCode, createUser, editUser,
+    createGetInTouchMessage,
+    sendGetInTouchEmail,
+    getAllCustomerMessage,
+    updateStatusCustomerMessage,
+    bookAppointment, 
+    sendConfirmEmail, 
+    verifyEmail, getAppointment } from '../controllers/authController.js';
 
 
 const router = express.Router();
@@ -245,7 +252,23 @@ router.get('/refresh',verifyJWT, async (req, res) => {
 
 
 
+router.get('/get-all-user',verifyJWT, getAllusers  );
+router.delete('/delete-user',verifyJWT, deleteUser);
+router.get('/get-all-code', verifyJWT, getAllCode);
+router.post('/create-user-wimage', verifyJWT, createUser);
+router.put('/edit-user', verifyJWT, editUser);
+router.post('/create-get-in-touch-message',verifyJWT, createGetInTouchMessage);
+router.post('/get-in-touch-send-confirm-email',verifyJWT, sendGetInTouchEmail);
 
+router.get('/get-all-customer-message',verifyJWT,  getAllCustomerMessage);
+router.put('/update-status-customer-message',verifyJWT, updateStatusCustomerMessage );
+
+router.post('/book-appointment', verifyJWT, bookAppointment);
+
+router.post('/send-confirm-email', verifyJWT, sendConfirmEmail);
+router.post('/verify', verifyJWT, verifyEmail);
+
+router.get('/get-appointments-by-user-id', verifyJWT, getAppointment);
 
 
 

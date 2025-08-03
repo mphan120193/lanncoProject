@@ -1,0 +1,73 @@
+.home-page {
+
+
+    //height: 300px;
+
+
+
+    .appointment-content {
+        margin-top: 10px;
+        //border: 1px solid green;
+        margin-bottom: 40px;
+
+        .title {
+            font-size: 50px;
+            margin-bottom: 20px;
+            background-color: #003b6d;
+            color: white;
+        }
+
+        .select-date-container {
+            //border: 1px solid green;
+        }
+
+        .select-time-container {
+            display: flex;
+            gap: 20px;
+            //border: 1px solid red;
+            height: 50px;
+            margin-top: 20px;
+
+            .time-button {
+                cursor: pointer;
+                border-radius: 10px;
+                //border: 1px solid green;
+                display: flex;
+                align-items: center;
+                padding: 3px;
+
+               
+
+            }
+
+            .selected {
+                background-color: blue;
+                
+                color: white;
+            }
+
+            .disabled-div {
+                pointer-events: none;  /* disables click, hover, etc */
+                opacity: 0.5;          /* visually looks disabled */
+              }
+
+        }
+
+        .appointment-info-text{
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+}

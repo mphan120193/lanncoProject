@@ -1,0 +1,102 @@
+.home-footer-section {
+
+
+    margin-top: 10px;
+    text-align: center;
+    height: 200px;
+    //border: 1px red solid;
+
+    .get-in-touch-section {
+        //border: 1px yellow solid;
+        height: 400px;
+        margin-top: 20px;
+        background-color: #003b6d;
+
+        .custom-title {
+            font-size: 40px;
+            color: white;
+        }
+
+        .get-in-touch-custom-row {
+            //border: 1px solid white;
+            height: 60px;
+
+            .custom-Col {
+
+                //border: 1px solid white;
+                input {
+                    height: 40px;
+                }
+
+            }
+
+            .custom-input {
+                input {
+                    width: 100%;
+                    height: 40px;
+
+                }
+            }
+        }
+
+        .get-in-touch-message-section {
+            margin-top: 20px;
+            color: white;
+            font-size: 18px;
+        }
+    }
+
+    .maps-section {
+        //border: 1px solid red;
+        width: 100%;
+        height: 300px;
+    }
+
+    .contact-infor-section{
+
+        margin-top: 10px;
+        .custom-row{
+            //border: 1px solid green;
+            .logo{
+                margin-right: 10px;
+                .image{
+                    width: 200px;
+                }
+
+            }
+            .branch{
+                font-size: 25px;
+                .branch-dental{
+                    color: green;
+                }
+            }
+
+            .phone-address-col{
+
+                .phone-number{
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+            }
+            .business-hour-col{
+
+
+                .business-hour{
+                    text-align: left;
+                }
+            }
+
+        }
+
+    }
+
+
+
+
+    .copy-right-section {
+        margin-top: 10px;
+
+    }
+}
+

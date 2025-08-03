@@ -126,135 +126,77 @@ export const userApi = createApi({
       invalidatesTags: ['UserList'],
     }),
 
-
-    
-    // Lannco porject api
-
-    addNewRegister: builder.mutation({
+    createGetInTouchMessage: builder.mutation({
       query: (data) => ({
-        url: '/lannco/create-register',
+        url: `/auth/create-get-in-touch-message`,
         method: 'POST',
-        body: data
-      }),
-      invalidatesTags: ['RegisterList'],
-    }),
-
-    getAllRegister: builder.query({
-      query: (params) => ({
-        url: `/lannco/get-register`,
-        method: 'GET',
-        params: params,
-      }),
-      providesTags: ['RegisterList'],
-    }),
-
-    
-
-    getAllRegisterByDate: builder.query({
-      query: (params) => ({
-        url: `/lannco/get-register-byDate`,
-        method: 'GET',
-        params: params,
-      }),
-      providesTags: ['RegisterList'],
-    }),
-
-    deleteRegister: builder.mutation({
-      query: (data) => ({
-        url: `/lannco/delete-register`,
-        method: 'DELETE',
         body: data,
       }),
-      invalidatesTags: ['RegisterList'],
     }),
 
-    editRegister: builder.mutation({
+    getInTouchSendConfirmEmail: builder.mutation({
       query: (data) => ({
-        url: `/lannco/edit-register`,
+        url: `/auth/get-in-touch-send-confirm-email`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
+
+    getAllMessage: builder.query({
+      query: (params) => ({
+        url: `/auth/get-all-customer-message`,
+        method: 'GET',
+        params: params,
+      }),
+      providesTags: ['MessageList'],
+    }),
+
+    updateStatusCustomerMessage: builder.mutation({
+      query: (data) => ({
+        url: `/auth/update-status-customer-message`,
         method: 'PUT',
         body: data,
       }),
-      invalidatesTags: ['RegisterList'],
+      invalidatesTags: ['MessageList'],
     }),
 
-    getAllPaySheet: builder.query({
-      query: (params) => ({
-        url: `/lannco/get-paysheet`,
-        method: 'GET',
-        params: params,
-      }),
-      providesTags: ['PaySheetList'],
-    }),
-    getAllPaySheetbyDate: builder.query({
-      query: (params) => ({
-        url: `/lannco/get-paysheet-byDate`,
-        method: 'GET',
-        params: params,
-      }),
-      providesTags: ['PaySheetList'],
-    }),
-    
-    addNewPaySheet: builder.mutation({
+    bookAppointment: builder.mutation({
       query: (data) => ({
-        url: '/lannco/create-paysheet',
+        url: `/auth/book-appointment`,
         method: 'POST',
-        body: data
-      }),
-      invalidatesTags: ['PaySheetList'],
-    }),
-
-    editInvoice: builder.mutation({
-      query: (data) => ({
-        url: `/lannco/edit-paysheet`,
-        method: 'PUT',
         body: data,
       }),
-      invalidatesTags: ['PaySheetList'],
     }),
 
-    deletePaySheet: builder.mutation({
+    sendConfirmEmail: builder.mutation({
       query: (data) => ({
-        url: `/lannco/delete-paysheet`,
-        method: 'DELETE',
+        url: `/auth/send-confirm-email`,
+        method: 'POST',
         body: data,
       }),
-      invalidatesTags: ['PaySheetList'],
     }),
 
-    getAllSubPaySheet: builder.query({
+    verifyEmail: builder.mutation({
+      query: (data) => ({
+        url: `/auth/verify`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
+
+    getAppointmentByUserID: builder.query({
       query: (params) => ({
-        url: `/lannco/get-sub-paysheet`,
+        url: `/auth/get-appointments-by-user-id`,
         method: 'GET',
         params: params,
       }),
-      providesTags: ['SubPaySheetList'],
+      providesTags: ['AppointmentList'],
     }),
 
-    addNewSubPaySheet: builder.mutation({
-      query: (data) => ({
-        url: '/lannco/create-sub-paysheet',
-        method: 'POST',
-        body: data
-      }),
-      invalidatesTags: ['SubPaySheetList','PaySheetList', 'RegisterList' ],
-    }),
-
-    deleteSubPaySheet: builder.mutation({
-      query: (data) => ({
-        url: `/lannco/delete-sub-paysheet`,
-        method: 'DELETE',
-        body: data,
-      }),
-      invalidatesTags: ['SubPaySheetList','PaySheetList'],
-    }),
-
-    
 
 
   })
 });
-
-
 
 export const {
   useRegisterMutation,
@@ -262,29 +204,20 @@ export const {
   useRefreshMutation,
   useLogoutMutation,
   useRefreshTokenQuery,
-  
   useGetAllUserQuery,
   useDeleteUserMutation,
   useGetAllCodeQuery,
   useRegisterWImageMutation,
   useLazyGetAllUserQuery,
   useEditUserMutation,
+  useCreateGetInTouchMessageMutation,
+  useGetInTouchSendConfirmEmailMutation,
+  useGetAllMessageQuery,
+  useUpdateStatusCustomerMessageMutation,
+  useBookAppointmentMutation,
+  useSendConfirmEmailMutation,
+  useVerifyEmailMutation,
+  useGetAppointmentByUserIDQuery
 
-  
-  
-  
-  useAddNewRegisterMutation,
-  useGetAllRegisterQuery,
-  useDeleteRegisterMutation,
-  useEditRegisterMutation,
-  useGetAllPaySheetQuery,
-  useAddNewPaySheetMutation,
-  useEditInvoiceMutation,
-  useDeletePaySheetMutation,
-  useGetAllSubPaySheetQuery,
-  useAddNewSubPaySheetMutation,
-  useDeleteSubPaySheetMutation,
-  useGetAllRegisterByDateQuery, 
-  useGetAllPaySheetbyDateQuery
 
 } = userApi;

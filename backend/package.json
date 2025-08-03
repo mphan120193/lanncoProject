@@ -2,7 +2,6 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "backend-pro",
-  "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server",
