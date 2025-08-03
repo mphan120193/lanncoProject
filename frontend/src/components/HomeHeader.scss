@@ -1,71 +1,7 @@
 
 
 
-// .home-header {
-//     .custom-navbar {
-//         border-bottom: 1px solid rgb(111, 111, 111);
 
-//         .custom-sell-car-btn {
-//             border-radius: 20px;
-//             background-color: rgb(92, 172, 92);
-//         }
-
-//         .custom-search-bar {
-//             width: 320px !important;
-            
-//         }
-
-//         .custom-brand {
-//             cursor: pointer;
-
-//             //border: 1px solid blue;
-//             .custom-brand-text {
-//                 font-weight: bold;
-//                 font-size: 30px;
-//                 color: black;
-
-//                 .and-text {
-//                     color: green;
-//                 }
-//             }
-
-
-
-//         }
-
-
-//     }
-
-//     .header-down{
-//         //border: 1px solid red;
-//         margin-top: 5px;
-//         .custom-row-header-down{
-//             height: 100px;
-//             .address-infor{
-//                 font-size: large;
-//                 img{
-//                     width: 15px;
-//                     margin-right: 5px;
-//                 }
-
-//             }
-//             .phone-number-infor{
-//                 font-size: 40px;
-//                 img{
-//                     width: 30px;
-//                     margin-right: 10px;
-//                 }
-
-//             }
-//         }
-//     }
-
-
-// }
-
-/* HomeHeader.css */
-
-/* Top Contact Bar */
 .top-contact-bar {
     background-color: #004b66; /* Darker blue for contrast */
     color: #e0f2f7; /* Light text for readability */
@@ -114,7 +50,9 @@
 }
 
 .navbar-brand-custom .brand-text {
-    color: #007bff; /* Main brand text color */
+    color: #1f70c7; 
+    font-size: 2rem;
+    
 }
 
 
@@ -136,8 +74,8 @@
 
 /* Dropdown Titles */
 .main-nav-links .nav-link.dropdown-toggle {
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    
 }
 
 .main-nav-links .nav-link.dropdown-toggle::after {
@@ -243,6 +181,7 @@
     .navbar-custom {
         padding-top: 1rem;
         padding-bottom: 1rem;
+        
     }
 
     .navbar-brand-custom {

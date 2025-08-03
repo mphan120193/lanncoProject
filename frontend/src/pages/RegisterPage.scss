@@ -1,0 +1,66 @@
+.home-page {
+
+
+    //height: 300px;
+
+
+
+    .aboutpage-content {
+        margin-top: 10px;
+        //border: 1px solid green;
+        margin-bottom: 40px;
+
+        .title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            background-color: #003b6d;
+            color: white;
+        }
+
+        .custom-table thead th {
+            background-color: #0a822e;
+            color: white;
+            text-align: center;
+
+
+           
+            
+
+        }
+
+        .custom-table tbody td {
+            .button-container{
+                display: flex;
+                gap: 5px;
+                .delete-button{
+                    background-color: rgb(150, 0, 0);
+                    
+        
+                   } 
+                   .edit-button{
+                    background-color: grey;
+                    
+                   }
+
+            }
+            
+
+        }
+        
+
+        .add-new-button {
+            .plus-icon {
+                width: 20px;
+                margin-right: 10px;
+            }
+        }
+
+
+
+
+
+
+
+
+    }
+}

@@ -1,26 +1,3 @@
-// import {format} from 'date-fns';
-// import {v4 as uuid} from 'uuid';
-
-// import path from 'path';
-// import { promises as fs } from 'fs';
-// import fs from 'fs';
-
-
-//  export const logEvents = async(message)=>{
-//     const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`;
-//     const logItem = `${dateTime}\t${uuid()}\t${message}`;
-//     console.log(logItem);
-
-//     try{
-//         if(!fs.existsSync(path.join(__dirname, 'logs'))){
-//             await fsPromises.mkdir(path.join(__dirname, 'logs'));
-//         }
-//         await fsPromises.appendFile(path.join(__dirname, 'logs', 'eventLog.txt'), logItem);
-
-//     }catch(err){
-//         console.log(err);
-//     }
-// }
 
 import fs from 'fs';
 import { promises as fsPromises } from 'fs';
@@ -36,7 +13,7 @@ const __dirname = dirname(__filename);
 
 export const logEvents = async (message) => {
   const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`;
-  const logItem = `${dateTime}\t${uuid()}\t${message}\n`; // added newline
+  const logItem = `${dateTime}\t${uuid()}\t${message}\n`; 
 
   console.log(logItem);
 

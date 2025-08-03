@@ -5782,3 +5782,69 @@
 20250606	00:49:39	5b8ecc78-118a-41e1-adf2-9dc096ffb104	GET	http://localhost:5173	/api/doctor/get-doctor-detail-by-id?id=68368c16585e1b3061dd7498
 20250606	00:49:41	f48ad096-98a5-46c6-a3e5-d966e81dfbcc	OPTIONS	http://localhost:5173	/api/doctor/get-doctor-detail-by-id?id=68368bb7585e1b3061dd7495
 20250606	00:49:41	8942ba5d-5738-4b38-9144-2c24019b9c6d	GET	http://localhost:5173	/api/doctor/get-doctor-detail-by-id?id=68368bb7585e1b3061dd7495
+20250609	13:39:17	4f713504-a237-4066-9041-6a047cb50799	OPTIONS	http://localhost:5173	/api/auth/login
+20250609	13:39:17	cd7cfdd9-599b-4b3b-8d27-c628a30c75ff	POST	http://localhost:5173	/api/auth/login
+20250609	13:39:18	c9518261-2ddc-4591-adb4-5dde71e93efc	OPTIONS	http://localhost:5173	/api/doctor/get-doctor-list
+20250609	13:39:18	19a51846-7ec3-4cea-9dba-86823e49e0d7	OPTIONS	http://localhost:5173	/api/auth/refresh
+20250609	13:39:18	b4bec0ae-2bff-4058-9a04-6abc98c363f7	GET	http://localhost:5173	/api/doctor/get-doctor-list
+20250609	13:39:18	f32b1b6a-70d0-4643-80da-b5f15fe50d6c	GET	http://localhost:5173	/api/auth/refresh
+20250609	13:39:22	45222444-1796-46c9-88c5-a639a16a11f5	OPTIONS	http://localhost:5173	/api/auth/get-all-user?id=68367bd4477e0695d3367c9b
+20250609	13:39:22	85085f82-ba8e-4d18-9270-a7ba078112b1	OPTIONS	http://localhost:5173	/api/auth/get-appointments-by-user-id?id=68367bd4477e0695d3367c9b
+20250609	13:39:22	3646c090-923f-4391-b27e-4eec5df7c5fd	GET	http://localhost:5173	/api/auth/get-all-user?id=68367bd4477e0695d3367c9b
+20250609	13:39:22	0c00f961-65dd-44f8-8410-61e1455ff94a	GET	http://localhost:5173	/api/auth/get-appointments-by-user-id?id=68367bd4477e0695d3367c9b
+20250609	13:39:28	e70d728c-25fe-4cd6-97a3-fe2713d5b0be	OPTIONS	http://localhost:5173	/api/auth/logout
+20250609	13:39:28	3116aef2-350a-4e4d-82a3-3104c8a75e76	POST	http://localhost:5173	/api/auth/logout
+20250609	13:39:38	030ddb27-d059-4168-8819-2f7557bd3347	OPTIONS	http://localhost:5173	/api/auth/login
+20250609	13:39:38	6b6d8ed7-3eaa-4dbf-9bdc-1fbb7931c6c3	POST	http://localhost:5173	/api/auth/login
+20250609	13:39:42	d7581aff-c2d0-4c63-8f80-306a7afd2201	OPTIONS	http://localhost:5173	/api/auth/get-all-user?id=68411d8f6f95dca5768eab45
+20250609	13:39:42	43038744-ae6e-403c-86a3-7229fb4ac6aa	OPTIONS	http://localhost:5173	/api/auth/get-appointments-by-user-id?id=68411d8f6f95dca5768eab45
+20250609	13:39:42	e1c2d7a8-da4b-4b5e-be8c-5023a988a2ff	GET	http://localhost:5173	/api/auth/get-all-user?id=68411d8f6f95dca5768eab45
+20250609	13:39:42	b594d21a-d773-400c-819e-c24f757557a9	GET	http://localhost:5173	/api/auth/get-appointments-by-user-id?id=68411d8f6f95dca5768eab45
+20250609	13:41:18	94797543-f97f-4fd1-b59d-0d906553f2de	OPTIONS	http://localhost:5173	/api/auth/get-all-user?id=68411d8f6f95dca5768eab45
+20250609	13:41:18	fd462a15-2252-48b5-a407-995ba97179ff	OPTIONS	http://localhost:5173	/api/auth/get-appointments-by-user-id?id=68411d8f6f95dca5768eab45
+20250609	13:41:18	54f6c341-6cb1-4672-8a6c-81d652feb97c	GET	http://localhost:5173	/api/auth/get-all-user?id=68411d8f6f95dca5768eab45
+20250609	13:41:18	508a3a5c-0ae4-456e-a04a-883184c15ddd	GET	http://localhost:5173	/api/auth/get-appointments-by-user-id?id=68411d8f6f95dca5768eab45
+20250609	13:42:09	db1222fa-e3fc-4d02-9104-2abd518683dd	OPTIONS	http://localhost:5173	/api/auth/get-all-code?type=TIME
+20250609	13:42:09	28b1e098-f8bc-4489-aeae-093ab258bacc	GET	http://localhost:5173	/api/auth/get-all-code?type=TIME
+20250719	15:56:32	52bbccf2-305e-42e4-8e18-863f6f830243	OPTIONS	http://localhost:5173	/api/auth/login
+20250719	15:56:32	a18408fc-89e3-48ed-b893-25ef3140a480	POST	http://localhost:5173	/api/auth/login
+20250719	15:57:15	d41882ec-3be7-4776-be09-052bc719af42	OPTIONS	http://localhost:5173	/api/auth/login
+20250719	15:57:15	804882a7-ef54-4970-b539-e394c032ce80	POST	http://localhost:5173	/api/auth/login
+20250719	15:57:16	ef5e0c36-d3c8-446a-bd66-45d4b41c0036	OPTIONS	http://localhost:5173	/api/doctor/get-doctor-list
+20250719	15:57:16	a6f091cd-7b5e-4232-8dd9-01ebdbac5355	OPTIONS	http://localhost:5173	/api/auth/refresh
+20250719	15:57:16	31dfcdea-1606-4c00-a5b1-ebb3ec609a1e	GET	http://localhost:5173	/api/doctor/get-doctor-list
+20250719	15:57:16	addff5f7-ff27-4c0d-9980-2354e7d3f676	GET	http://localhost:5173	/api/auth/refresh
+20250719	15:57:22	2f274aad-c9a0-4ff9-9a3e-b559f5439a0d	OPTIONS	http://localhost:5173	/api/doctor/get-doctor-detail-by-id?id=68368a91826ee06ff1f458f1
+20250719	15:57:22	64e2935f-cade-40ff-ade6-6c28d2a245d6	GET	http://localhost:5173	/api/doctor/get-doctor-detail-by-id?id=68368a91826ee06ff1f458f1
+20250719	15:57:25	90714754-1a9a-4895-8769-1ebe6f18f499	OPTIONS	http://localhost:5173	/api/doctor/get-doctor-detail-by-id?id=68368c16585e1b3061dd7498
+20250719	15:57:25	4983b2fa-9300-4721-9063-efcb67af9349	GET	http://localhost:5173	/api/doctor/get-doctor-detail-by-id?id=68368c16585e1b3061dd7498
+20250719	15:57:28	906c09a0-d0a3-4dd9-acd7-ca474cae38fa	OPTIONS	http://localhost:5173	/api/auth/get-all-code?type=TIME
+20250719	15:57:28	1e2179a2-f420-456b-9f27-34634b153c89	GET	http://localhost:5173	/api/auth/get-all-code?type=TIME
+20250719	16:00:15	f0d19e9b-47f5-468a-99db-db7ad399da44	OPTIONS	http://localhost:5173	/api/auth/get-all-user?id=68367bd4477e0695d3367c9b
+20250719	16:00:15	15d4cec3-01f0-4009-a392-517faccc719a	OPTIONS	http://localhost:5173	/api/auth/get-appointments-by-user-id?id=68367bd4477e0695d3367c9b
+20250719	16:00:15	70de8073-c2ce-415b-a05a-520474253616	GET	http://localhost:5173	/api/auth/get-all-user?id=68367bd4477e0695d3367c9b
+20250719	16:00:15	b2925977-ea38-4afd-9429-8c3a2a1c9a3b	GET	http://localhost:5173	/api/auth/get-appointments-by-user-id?id=68367bd4477e0695d3367c9b
+20250721	06:50:53	34534ebb-3f8b-47a1-9585-c445790aa0a5	OPTIONS	http://localhost:5173	/api/auth/register
+20250721	06:50:53	58c7e053-83a1-4064-95c2-e615ccb5365b	POST	http://localhost:5173	/api/auth/register
+20250721	06:51:38	14c0b9ba-b9a1-447d-8d86-67e97d44dcb3	OPTIONS	http://localhost:5173	/api/auth/login
+20250721	06:51:38	a4a6e986-8e91-45aa-8b98-5b6ebe77493a	POST	http://localhost:5173	/api/auth/login
+20250721	06:51:38	177e57e6-2ac0-473d-8b35-932cad159120	OPTIONS	http://localhost:5173	/api/doctor/get-doctor-list
+20250721	06:51:38	caf32778-bf23-469a-b253-2fad59821a8c	OPTIONS	http://localhost:5173	/api/auth/refresh
+20250721	06:51:38	0bb70a03-ad1d-43c1-9006-4382c948b98f	GET	http://localhost:5173	/api/doctor/get-doctor-list
+20250721	06:51:38	1ad7acdd-d779-4873-9bef-960de7582cf7	GET	http://localhost:5173	/api/auth/refresh
+20250722	00:16:42	b6fd14c6-3d0a-4904-bf16-55768de3e6a4	Error: Not Found - /.well-known/appspecific/com.chrome.devtools.json
+20250722	00:16:47	571b87a1-0845-4846-81d6-4891c75ab6e8	Error: Not Found - /.well-known/appspecific/com.chrome.devtools.json
+20250722	00:17:51	f762a496-6f2e-4995-a5ab-b9bb1fd6f1eb	Error: Not Found - /.well-known/appspecific/com.chrome.devtools.json
+20250722	00:17:56	6df8f6c8-5dbd-432a-be05-5397059e4500	Error: Not Found - /.well-known/appspecific/com.chrome.devtools.json
+20250722	00:19:40	b4b5d0d4-040f-4af0-817e-17724da4ff16	TypeError: Cannot destructure property 'email' of 'req.body' as it is undefined.
+20250723	01:21:51	655f8950-5618-42e7-839a-f70efc341a68	ReferenceError: eq is not defined
+20250723	01:22:25	031d5f98-4a70-4279-927b-13d147977919	ReferenceError: Cannot access 'Editregister' before initialization
+20250723	01:23:23	7275631a-b155-4613-ac51-c485956aa420	ReferenceError: Cannot access 'Editregister' before initialization
+20250723	01:24:23	a4d24aa1-7411-450e-b92f-0e8d85c48f9a	ReferenceError: Cannot access 'Editregister' before initialization
+20250724	22:00:05	2f93beb0-4424-4523-a77c-4c7b34ce1555	ReferenceError: Invalid left-hand side in assignment
+20250728	14:04:01	17779809-3e66-443b-8d27-7a3ffd8d73ba	ReferenceError: inputDate is not defined
+20250728	14:04:05	45a1a614-5af5-408e-b4db-50c812859fa0	ReferenceError: inputDate is not defined
+20250728	14:04:13	17003714-9804-4146-9dcf-51084203055a	ReferenceError: inputDate is not defined
+20250728	14:04:27	1c7a6816-6f69-476d-9ed6-441415c83b70	ReferenceError: inputDate is not defined
+20250728	14:04:27	6d267c27-ad61-4a68-8a02-c6904cd4518f	ReferenceError: inputDate is not defined
+20250802	23:54:29	dec3b692-8554-4cda-9d20-53e4934b291a	TypeError: EditRegister.save is not a function
