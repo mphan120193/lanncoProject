@@ -4,7 +4,7 @@ import { Form, Button, Card, Container } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { useRegisterMutation } from '../slices/userApiSlice';
 import './RegisterScreen.css';
-import logoImage from '/Logo.png';
+
 
 
 const RegisterScreen = () => {
@@ -43,14 +43,9 @@ const RegisterScreen = () => {
                 <Card className='register-card shadow-lg border-0 rounded-4'>
                     <Card.Body className='p-5 text-center'>
 
-                        <img
-                            src={logoImage}
-                            alt="Sunshine Dental Care Logo"
-                            className="mb-4 register-logo"
-                            style={{ maxWidth: '320px', height: 'auto' }}
-                        />
-                        <h1 className='register-title mb-4'>Create Your Account</h1>
-                        <p className='register-subtitle text-muted mb-4'>Join Sunshine Dental Care today.</p>
+                        <h1 className='welcome-title'>Welcome to Lannco</h1>
+                        <h2 className='register-title mb-4'>Create Your Account</h2>
+                        
 
                         <Form onSubmit={submitHandler}>
                             <Form.Group className='mb-3' controlId='firstName'>

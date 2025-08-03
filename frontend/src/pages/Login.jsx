@@ -1,13 +1,13 @@
 import './Login.css';
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import { useLoginMutation } from '../redux/api';
 import { toast } from 'react-toastify';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Card } from 'react-bootstrap';
-import logoImage from '/Logo.png';
+
 import { useDispatch } from 'react-redux';
 import { setCredentials, logout } from '../slices/authSlice';
+import { useLogoutMutation } from '../slices/userApiSlice';
 
 
 
@@ -21,8 +21,20 @@ const Login = () => {
   const [login] = useLoginMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [logoutApiCall] = useLogoutMutation();
 
-  
+  useEffect(()=>{
+
+        async function cleanUp (){
+          console.log('Use Effect clean up...')
+          await logoutApiCall().unwrap();
+            dispatch(logout());
+            localStorage.clear();
+
+        }
+        cleanUp();
+          
+  }, [])
 
 
   const handleLogin = async (e) => {
@@ -59,14 +71,9 @@ const Login = () => {
         <Card className='login-card shadow-lg border-0 rounded-4'>
           <Card.Body className='p-5 text-center'>
 
-            <img
-              src={logoImage}
-              alt="Sunshine Dental Care Logo"
-              className="mb-4 login-logo"
-              style={{ maxWidth: '320px', height: 'auto' }}
-            />
+            
             <h1 className='login-title mb-4'>Welcome Back!</h1>
-            <p className='login-subtitle text-muted mb-4'>Sign in to manage your appointments.</p>
+            
 
             <Form onSubmit={handleLogin}>
               <Form.Group className='mb-3' controlId='email'>
@@ -101,12 +108,7 @@ const Login = () => {
               </Button>
             </Form>
 
-            <div className='mt-4 text-center'>
-              <p className='text-muted'>
-                Don't have an account? <Link to='/register' className='register-link'>Register Here</Link>
-              </p>
-
-            </div>
+            
           </Card.Body>
         </Card>
       </Container>

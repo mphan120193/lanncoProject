@@ -5,23 +5,18 @@ import { BrowserRouter as Router, Route, Routes, Navigate, Outlet, useNavigate }
 import Login from './pages/Login';
 import { useSelector } from 'react-redux';
 import { PATHS } from './constants/paths';
-import Dashboard from './pages/Dashboard';
+
 import Welcome from './pages/Welcome';
 import RegisterScreen from './pages/RegisterScreen';
 import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import NewPatientsPage from './pages/NewPatientsPage';
-import ServicesPage from './pages/ServicesPage';
-import ContactPage from './pages/ContactPage';
-import UserManageScreen from './pages/UserManageScreen';
-import CreateNewUser from './pages/CreateNewUser';
-import ManageDoctor from './pages/ManageDoctor';
-import CustomerMessagePage from './pages/CustomerMessagePage';
-import ManageDoctorSchedule from './pages/ManageDoctorSchedule';
-import AppointmentPage from './pages/AppointmentPage';
-import ConfirmMail from './pages/ConfirmMail';
-import DoctorDetailPage from './pages/DoctorDetailPage';
-import ProfilePage from './pages/ProfilePage';
+import RegisterPage from './pages/RegisterPage';
+import CreateNewRegister from './pages/CreateNewRegister'
+import EditRegisterPage from './pages/EditRegisterPage';
+
+import InvoicePage from './pages/InvoicePage';
+import CreateNewInvoice from './pages/CreateNewInvoice'
+import EditInvoice from './pages/EditInvoicePage';
+ 
 
 const ProtectedRoute = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -29,11 +24,6 @@ const ProtectedRoute = () => {
 };
 
 
-
-// const ProtectedRoute = ({ children }) => {
-//   const token = localStorage.getItem('accessToken');
-//   return token ? children : <Navigate to="/" replace />;
-// };
 
 
 
@@ -68,25 +58,19 @@ function App() {
         <Route path={PATHS.LOGIN} element={<Login />} />
 
         <Route path={PATHS.REGISTER} element={<RegisterScreen />} />
-        <Route path={PATHS.APPOINTMENT} element={<AppointmentPage />} />
+        
         <Route path='' element={<ProtectedRoute />}>
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+          
           <Route path={PATHS.HOME} element={<HomePage />} />
-          <Route path={PATHS.ABOUT} element={<AboutPage />} />
-          <Route path={PATHS.NEW_PATIENT} element={<NewPatientsPage />} />
-          <Route path={PATHS.SERVICES} element={<ServicesPage />} />
-          <Route path={PATHS.CONTACT} element={<ContactPage />} />
+          <Route path={PATHS.REGISTER_PAGE} element={<RegisterPage />} />
+          <Route path={PATHS.NEWREGISTER_PAGE} element={<CreateNewRegister />} />
+          <Route path={PATHS.EDITREGISTER_PAGE} element={<EditRegisterPage />} />
+          
+          <Route path={PATHS.INVOICE_PAGE} element={<InvoicePage />} />
+          <Route path={PATHS.NEWINVOICE_PAGE} element={<CreateNewInvoice />} />
+          <Route path={PATHS.EDITINVOICE_PAGE} element={<EditInvoice />} />
 
-          <Route path={PATHS.PROFILE} element={<ProfilePage />} />
-
-          <Route path={PATHS.SYSTEM_USER_MANAGE} element={<UserManageScreen />} />
-          <Route path={PATHS.SYSTEM_CREATE_NEW_USER} element={<CreateNewUser />} />
-          <Route path={PATHS.SYSTEM_MANAGE_DOCTOR} element={<ManageDoctor />} />
-
-          <Route path={PATHS.SYSTEM_CUSTOMER_MESSAGE} element={<CustomerMessagePage />} />
-          <Route path={PATHS.SYSTEM_MANAGE_DOCTOR_SCHEDULE} element={<ManageDoctorSchedule />} />
-          <Route path={PATHS.CONFIRM_EMAIL} element={<ConfirmMail />} />
-          <Route path={PATHS.GET_DOCTOR_DETAIL} element={<DoctorDetailPage />} />
+          
 
 
 
